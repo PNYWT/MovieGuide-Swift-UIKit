@@ -39,23 +39,20 @@ class PopularMovieViewCell: UITableViewCell {
         
         
         guard let posterString = poster else {return}
-        urlString = "https://image.tmdb.org/t/p/w300" + posterString
+        urlString = DomainPath.pathImg(posterString: posterString)
         
         guard let posterImageURL = URL(string: urlString) else {
             self.imgMovie.image = UIImage.init(systemName: "")
             return
         }
-        
-        // Before we download the image we clear out the old one
         self.imgMovie.image = nil
         
         getImageDataFrom(url: posterImageURL)
         
     }
     
-    
     // MARK: - Get image data
-    private func getImageDataFrom(url: URL) {
+    private func getImageDataFrom(url: URL){
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let error = error {
                 print("DataTask error: \(error.localizedDescription)")
@@ -72,18 +69,4 @@ class PopularMovieViewCell: UITableViewCell {
             }
         }.resume()
     }
-    
-    // MARK: - Convert date format
-        func convertDateFormater(_ date: String?) -> String {
-            var fixDate = ""
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            if let originalDate = date {
-                if let newDate = dateFormatter.date(from: originalDate) {
-                    dateFormatter.dateFormat = "dd/MM/yyyy"
-                    fixDate = dateFormatter.string(from: newDate)
-                }
-            }
-            return fixDate
-        }
 }

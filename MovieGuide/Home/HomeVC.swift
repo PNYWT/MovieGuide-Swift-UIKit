@@ -7,17 +7,19 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-    let apiService = APIMovie.init()
-    
-    private var movieData:[MovieModel] = []
+class HomeVC: UIViewController {
+    private var movieData:[PopularMovieModel] = []
     @IBOutlet weak var tbvMovie: UITableView!
     private let reuseIden = "MovieCell"
+    
+    override func viewDidAppear(_ animated: Bool) {
+        fetchData()
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        fetchData()
         setupTbv()
     }
     
@@ -28,7 +30,7 @@ class ViewController: UIViewController {
     }
 
     private func fetchData(){
-        apiService.getPopularMoviesData { md, err in
+        APIMovie.getPopularMoviesData { md, err in
             if let md_tmp = md{
                 self.movieData = md_tmp.moviesModel
             }
@@ -40,7 +42,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource{
+extension HomeVC: UITableViewDelegate, UITableViewDataSource{
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -49,13 +51,22 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIden, for: indexPath) as! PopularMovieViewCell
-        let md:MovieModel = movieData[indexPath.row]
+        let md:PopularMovieModel = movieData[indexPath.row]
         cell.setupUI(title: md.title, releaseDate: md.year, rating: md.rateing, overview: md.overview, poster: md.posterImageURL)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 300
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let md:PopularMovieModel = movieData[indexPath.row]
+        if let id = md.idMovie{
+            let vc = MovieDetailVC.init()
+            vc.movie_id = id
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 
