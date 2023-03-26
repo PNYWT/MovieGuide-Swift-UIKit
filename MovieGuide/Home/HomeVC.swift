@@ -12,9 +12,10 @@ class HomeVC: UIViewController {
     @IBOutlet weak var tbvMovie: UITableView!
     private let reuseIden = "MovieCell"
     
+    @IBOutlet var vMovieBanner: MovieBanner!
+    
     override func viewDidAppear(_ animated: Bool) {
         fetchData()
-        
     }
     
     override func viewDidLoad() {
@@ -34,9 +35,18 @@ class HomeVC: UIViewController {
             if let md_tmp = md{
                 self.movieData = md_tmp.moviesModel
             }
-            
             DispatchQueue.main.async {
                 self.tbvMovie.reloadData()
+            }
+        }
+        
+        APIMovie.getTopMovieData { md, err in
+            if let mdTmp = md{
+                DispatchQueue.main.async {
+                    self.vMovieBanner.acceptDataBanner(md: mdTmp.topMovieModel)
+                }
+            }else{
+                
             }
         }
     }

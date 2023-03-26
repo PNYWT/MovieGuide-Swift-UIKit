@@ -13,6 +13,7 @@ let language = "&language=en-US&page=1"
 
 let popularPath = "/movie/popular"
 let moviesIdPath = "/movie/"
+let topMoviesPath = "/movie/top_rated"
 
 class ConfigURL{
     static func popularMovie()->String{
@@ -21,5 +22,9 @@ class ConfigURL{
     
     static func movieID(id:String)-> String{
         return domainString + moviesIdPath + id + api_key + language
+    }
+    
+    static func topMovie()-> String{
+        return domainString + topMoviesPath + api_key + language
     }
 }

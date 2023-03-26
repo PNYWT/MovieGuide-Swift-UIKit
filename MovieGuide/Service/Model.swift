@@ -62,3 +62,24 @@ struct GenresMovieId: Decodable{
         case id, name
     }
 }
+
+//TopMovie
+struct TopMovieDataModel: Decodable{
+    let topMovieModel : [TopMovieModel]
+    
+    private enum CodingKeys: String, CodingKey{
+        case topMovieModel = "results"
+    }
+}
+
+struct TopMovieModel: Decodable{
+    let idTopMovie:Int?
+    let posterImageURL:String?
+    let voteScore:Double?
+    
+    private enum CodingKeys: String, CodingKey{
+        case idTopMovie = "id"
+        case posterImageURL = "poster_path"
+        case voteScore = "vote_average"
+    }
+}

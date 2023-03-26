@@ -48,7 +48,6 @@ class APIMovie: NSObject, URLSessionDataDelegate{
     
     static func getMovieIDData(idMovie: String,completionBlock: @escaping (MovieIDDataModel?, String?) -> Void) -> Void {
         let movieIDURL = ConfigURL.movieID(id: idMovie)
-        print("movieIDURL -> \(movieIDURL)")
         
         guard let url = URL(string: movieIDURL) else {return}
         URLSession.shared.dataTask(with: url) { data, res, err in
@@ -73,6 +72,41 @@ class APIMovie: NSObject, URLSessionDataDelegate{
             do {
                 let decoder = JSONDecoder()
                 let jsonData = try decoder.decode(MovieIDDataModel.self, from: dataSucc)
+                DispatchQueue.main.async {
+                    completionBlock(jsonData, nil)
+                }
+            }catch let error{
+                completionBlock(nil, error.localizedDescription)
+            }
+        }.resume()
+    }
+    
+    static func getTopMovieData(completionBlock: @escaping (TopMovieDataModel?, String?) -> Void) -> Void {
+        let topMovie = ConfigURL.topMovie()
+        
+        guard let url = URL(string: topMovie) else {return}
+        URLSession.shared.dataTask(with: url) { data, res, err in
+            if let error = err{
+                completionBlock(nil, error.localizedDescription)
+                print("URLSession Error -> \(error.localizedDescription)")
+                return
+            }
+            
+            guard let response = res as? HTTPURLResponse else{
+                print("HTTPURLResponse Response -> Empty")
+                return
+            }
+            print("URL ->\(url)\nResponse status code -> \(response.statusCode)")
+            
+            guard let dataSucc = data else{
+                print("Data -> Empty")
+                return
+            }
+            APIMovie.logResponse(data: data)
+            
+            do {
+                let decoder = JSONDecoder()
+                let jsonData = try decoder.decode(TopMovieDataModel.self, from: dataSucc)
                 DispatchQueue.main.async {
                     completionBlock(jsonData, nil)
                 }

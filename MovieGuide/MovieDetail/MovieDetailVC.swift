@@ -22,8 +22,6 @@ class MovieDetailVC: UIViewController {
     @IBOutlet weak var lbTagline: UILabel!
     @IBOutlet weak var lbOverview: UILabel!
     
-    
-    
     override func viewDidAppear(_ animated: Bool) {
         fetchData()
     }
@@ -149,6 +147,4 @@ extension MovieDetailVC: UICollectionViewDelegate, UICollectionViewDataSource{
         }
         return cell
     }
-    
-    
 }
