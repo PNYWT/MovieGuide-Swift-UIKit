@@ -6,25 +6,23 @@
 //
 
 import Foundation
-//"https://api.themoviedb.org/3/movie/popular?api_key=\(api_key)&language=en-US&page=1"
-let api_key = "?api_key=d86faff0304420d80a4eb8624dd3a665"
+let api_key = "d86faff0304420d80a4eb8624dd3a665"
 let domainString = "https://api.themoviedb.org/3"
 let language = "&language=en-US&page=1"
 
 let popularPath = "/movie/popular"
 let moviesIdPath = "/movie/"
 let topMoviesPath = "/movie/top_rated"
+let tvShowTopRatePath = "/tv/top_rated"
 
-class ConfigURL{
-    static func popularMovie()->String{
-        return domainString + popularPath + api_key + language
-    }
+class ConfigURL:NSObject{
     
-    static func movieID(id:String)-> String{
-        return domainString + moviesIdPath + id + api_key + language
-    }
+    static let popularMovieURL = domainString + popularPath
+    static let movieIDURL = domainString + moviesIdPath
+    static let topMovieURL = domainString + topMoviesPath
+    static let tvShowTopRateURL = domainString + tvShowTopRatePath
     
-    static func topMovie()-> String{
-        return domainString + topMoviesPath + api_key + language
+    override init() {
+        super.init()
     }
 }

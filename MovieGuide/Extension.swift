@@ -41,17 +41,20 @@ func numberformatter(number:Int?) -> String{
     }
 }
 
-//extension UIViewController {
-//
-//    func getCurrentViewController() -> UIViewController? {
-//        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-//           let sceneDelegate = windowScene.delegate as? SceneDelegate,
-//           let window = sceneDelegate.window {
-//            return window.rootViewController?.getCurrentViewController()
-//        }
-//        return nil
-//    }
-//}
+func convertToTimeFormat(_ minutes: Int) -> String {
+    let hours = minutes / 60
+    let minutes = minutes % 60
+    let hoursString = String(format: "%2d", hours)
+    let minutesString = String(format: "%02d", minutes)
+    return "\(hoursString)h \(minutesString)m"
+}
+
+func addShadow(to label: UILabel, withOffset offset: CGSize) {
+    label.layer.shadowColor = UIColor.black.cgColor
+    label.layer.shadowOffset = offset
+    label.layer.shadowOpacity = 1.0
+    label.layer.shadowRadius = 2.0
+}
 
 extension UIApplication {
 

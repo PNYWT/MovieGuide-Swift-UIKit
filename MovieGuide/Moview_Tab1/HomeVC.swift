@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class HomeVC: UIViewController {
     private var movieData:[PopularMovieModel] = []
@@ -15,12 +16,12 @@ class HomeVC: UIViewController {
     @IBOutlet var vMovieBanner: MovieBanner!
     
     override func viewDidAppear(_ animated: Bool) {
-        fetchData()
+        vMovieBanner.scrollingsetupTimmer()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        fetchData()
         setupTbv()
     }
     
@@ -50,10 +51,14 @@ class HomeVC: UIViewController {
             }
         }
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        vMovieBanner.timer?.invalidate()
+        vMovieBanner.timer = nil
+    }
 }
 
 extension HomeVC: UITableViewDelegate, UITableViewDataSource{
-
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movieData.count
@@ -78,5 +83,30 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource{
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if movieData.count > 0{
+            return 50
+        }else{
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if movieData.count > 0{
+            let headerViewHeight = 50.0
+            let headerView: UIView = UIView.init()
+            headerView.frame = CGRect.init(x: 0, y: 0, width: tableView.frame.size.width, height: headerViewHeight)
+            headerView.backgroundColor = tableView.backgroundColor
+            let label = UILabel(frame: CGRect(x: 20, y: 0, width: tableView.frame.width - 40, height: headerView.frame.height))
+            label.text = "Popular Moview"
+            label.font = UIFont.boldSystemFont(ofSize: 26)
+            headerView.addSubview(label)
+            return headerView
+        }else{
+            let headerView: UIView = UIView.init()
+            headerView.frame = CGRect.init(x: 0, y: 0, width: tableView.frame.size.width, height: 0)
+            return headerView
+        }
+    }
 }
-

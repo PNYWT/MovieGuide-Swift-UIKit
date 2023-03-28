@@ -8,7 +8,7 @@
 import Foundation
 
 
-//Poplular
+//MARK: Poplular
 struct PopularMovieDataModel: Decodable{
     let moviesModel : [PopularMovieModel]
     
@@ -35,7 +35,7 @@ struct PopularMovieModel: Decodable{
 }
 
 
-//MovieID
+//MARK: MovieID
 struct MovieIDDataModel: Decodable{
     let tagline:String?
     let title:String?
@@ -63,7 +63,7 @@ struct GenresMovieId: Decodable{
     }
 }
 
-//TopMovie
+//MARK: TopMovie
 struct TopMovieDataModel: Decodable{
     let topMovieModel : [TopMovieModel]
     

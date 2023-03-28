@@ -68,7 +68,10 @@ class MovieDetailVC: UIViewController {
             
             lbRelease_date.text = convertDateFormater(md.release_date)
             
-            lbRuntimeMovie.text = "Runtime: \(md.runtime ?? 0)"
+            if let runtime = md.runtime{
+                let runTimeFormatt = convertToTimeFormat(runtime)
+                lbRuntimeMovie.text = runTimeFormatt
+            }
             
             lbBudgetMovie.text = "$ \(numberformatter(number: md.budget))"
             

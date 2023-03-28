@@ -18,6 +18,8 @@ class MovieBanner: UIView{
     private var dataBanner:[TopMovieModel] = []
     private var fakeIndex = 0
     
+    var timer: Timer?
+    
     // Custom init method
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -52,12 +54,14 @@ class MovieBanner: UIView{
         cltvBanner.showsHorizontalScrollIndicator = false
         collectioViewSetup(sender: cltvBanner)
         scrollingsetupTimmer()
+        if dataBanner.count > 0{
+            pagecontrolCltv.numberOfPages = dataBanner.count
+        }
     }
     
-    private func scrollingsetupTimmer(){
-        pagecontrolCltv.numberOfPages = dataBanner.count
+    func scrollingsetupTimmer(){
         if dataBanner.count > 0{
-            Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(scrollingSetup), userInfo: nil, repeats: true)
+            timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(scrollingSetup), userInfo: nil, repeats: true)
         }
     }
     

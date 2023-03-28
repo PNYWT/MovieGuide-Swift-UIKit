@@ -1,49 +1,60 @@
 //
-//  MoviewBannerViewCell.swift
+//  TVshowViewCell.swift
 //  MovieGuide
 //
-//  Created by Dev on 26/3/2566 BE.
+//  Created by Dev on 28/3/2566 BE.
 //
 
 import UIKit
 
-class MoviewBannerViewCell: UICollectionViewCell {
+class TVshowViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var imgBanner: UIImageView!
-    @IBOutlet weak var bgBanner: UIImageView!
     @IBOutlet weak var lbScore: UILabel!
+    @IBOutlet weak var lbName: UILabel!
+    @IBOutlet weak var imgPoster: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
-    func setUI(md:TopMovieModel?){
+    func setUI(md:TvTopRateModel?){
         if let md_Tmp = md{
             guard let posterString = md_Tmp.posterImageURL else {return}
             let urlString = DomainPath.pathImg(posterString: posterString)
             
             guard let posterImageURL = URL(string: urlString) else {
-                self.imgBanner.image = UIImage.init(systemName: "")
+                self.imgPoster.image = UIImage.init(systemName: "")
                 return
             }
-            self.imgBanner.image = nil
-            self.bgBanner.image = nil
-            
+            self.imgPoster.image = nil
+            print("posterImageURL -> \(posterImageURL)")
             getImageDataFrom(url: posterImageURL)
             
             
-            if let score = md_Tmp.voteScore{
-                lbScore.text = "Score: \(score)"
-                lbScore.font = UIFont.boldSystemFont(ofSize: 18)
-                lbScore.textColor = .systemYellow
-            }else{
-                lbScore.text = ""
+            guard let name = md_Tmp.titleName else {
+                lbName.text = ""
+                return
             }
-        }
+            lbName.text = name
+            lbName.font = UIFont.boldSystemFont(ofSize: 14)
+            lbName.textColor = .systemBlue
+            lbName.shadowOffset = CGSize(width: 1, height: 1)
+            addShadow(to: lbName, withOffset: CGSize(width: 1.0, height: 1.0))
+            
+            guard let score = md_Tmp.rateing else{
+                lbScore.text = ""
+                return
+            }
+            lbScore.text = "Score: \(score)"
+            lbScore.font = UIFont.boldSystemFont(ofSize: 12)
+            lbScore.textColor = .yellow
         
+            
+        }
     }
-
+    
+    // MARK: - Get image data
     private func getImageDataFrom(url: URL){
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let error = error {
@@ -56,8 +67,7 @@ class MoviewBannerViewCell: UICollectionViewCell {
             }
             DispatchQueue.main.async {
                 if let image = UIImage(data: data) {
-                    self.imgBanner.image = image
-                    self.bgBanner.image = image
+                    self.imgPoster.image = image
                 }
             }
         }.resume()
