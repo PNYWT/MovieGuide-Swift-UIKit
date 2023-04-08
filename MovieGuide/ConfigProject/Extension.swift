@@ -49,6 +49,7 @@ func convertToTimeFormat(_ minutes: Int) -> String {
     return "\(hoursString)h \(minutesString)m"
 }
 
+//MARK: Add addShadow
 func addShadow(to label: UILabel, withOffset offset: CGSize) {
     label.layer.shadowColor = UIColor.black.cgColor
     label.layer.shadowOffset = offset
@@ -56,9 +57,21 @@ func addShadow(to label: UILabel, withOffset offset: CGSize) {
     label.layer.shadowRadius = 2.0
 }
 
-extension UIApplication {
+//MARK: Add color AttributedString
+func getAttributedString(arrayText:[String]?, arrayColors:[UIColor]?, arrayFonts:[UIFont]?) -> NSMutableAttributedString {
+    let finalAttributedString = NSMutableAttributedString()
+    for i in 0 ..< (arrayText?.count)! {
+        let attributes = [NSAttributedString.Key.foregroundColor: arrayColors?[i], NSAttributedString.Key.font: arrayFonts?[i]]
+        let attributedStr = (NSAttributedString.init(string: arrayText?[i] ?? "", attributes: attributes as [NSAttributedString.Key : Any]))
+        if i != 0 {
+            finalAttributedString.append(NSAttributedString.init(string: " "))
+        }
+        finalAttributedString.append(attributedStr)
+    }
+    return finalAttributedString
+}
 
-    
+extension UIApplication {
     class func getTopViewController(base: UIViewController? = UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController) -> UIViewController? {
 
         if let nav = base as? UINavigationController {
@@ -72,4 +85,9 @@ extension UIApplication {
         }
         return base
     }
+}
+
+
+class KeysUSDF{
+    static let saveLogin = "saveLogin"
 }

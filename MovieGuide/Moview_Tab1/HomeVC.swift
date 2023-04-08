@@ -21,8 +21,9 @@ class HomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchData()
+        self.title = "Home"
         setupTbv()
+        fetchData()
     }
     
     private func setupTbv(){

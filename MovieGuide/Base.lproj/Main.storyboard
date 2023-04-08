@@ -12,7 +12,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="68Y-pY-9Im">
             <objects>
-                <tabBarController id="vsB-SN-89G" sceneMemberID="viewController">
+                <tabBarController id="vsB-SN-89G" customClass="TabBarController" customModule="MovieGuide" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lSv-5c-BzT">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -30,7 +30,7 @@
         <!--Item-->
         <scene sceneID="Kod-fe-stj">
             <objects>
-                <navigationController id="LnQ-nC-Xcj" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavHome" id="LnQ-nC-Xcj" customClass="NavController" customModule="MovieGuide" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="MNU-6h-aM1"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9Ys-z5-lo7">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -78,7 +78,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Ia0-DC-ZpI"/>
                     <connections>
-                        <outlet property="tbvMovie" destination="DaM-Al-n9n" id="r8T-9i-nTk"/>
+                        <outlet property="tbvMovie" destination="DaM-Al-n9n" id="2W8-Ly-K2h"/>
                         <outlet property="vMovieBanner" destination="VCr-22-0WF" id="coz-dh-7HC"/>
                     </connections>
                 </viewController>
@@ -89,7 +89,7 @@
         <!--Item-->
         <scene sceneID="Snq-gJ-BP4">
             <objects>
-                <navigationController id="6aO-Oj-Zvk" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavTvShow" id="6aO-Oj-Zvk" customClass="NavController" customModule="MovieGuide" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="aSL-J7-tVE"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GuC-OK-92Z">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>

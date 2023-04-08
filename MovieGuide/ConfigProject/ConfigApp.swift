@@ -7,6 +7,8 @@
 
 import Foundation
 
+let spaceDefualt:CGFloat = 8
+
 let showLog = true
 
 func logResponse(url:String,status:Int,data:Data?,_type: APIStatus){

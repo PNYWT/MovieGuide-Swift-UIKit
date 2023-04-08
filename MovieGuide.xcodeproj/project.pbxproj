@@ -34,6 +34,12 @@
 		D73A8A1029D2C8D000D6A31C /* TVShowVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73A8A0F29D2C8D000D6A31C /* TVShowVC.swift */; };
 		D73A8A1229D2C95900D6A31C /* TvShowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73A8A1129D2C95900D6A31C /* TvShowModel.swift */; };
 		D73A8A1429D2CAAA00D6A31C /* APITv.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73A8A1329D2CAAA00D6A31C /* APITv.swift */; };
+		D78A346A29E1383A0069242B /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78A346829E1383A0069242B /* LoginVC.swift */; };
+		D78A346B29E1383A0069242B /* LoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D78A346929E1383A0069242B /* LoginVC.xib */; };
+		D78A346D29E1396A0069242B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78A346C29E1396A0069242B /* TabBarController.swift */; };
+		D78A346F29E13C610069242B /* NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78A346E29E13C610069242B /* NavController.swift */; };
+		D78A347529E14CF00069242B /* PolicyVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78A347329E14CF00069242B /* PolicyVc.swift */; };
+		D78A347629E14CF00069242B /* PolicyVc.xib in Resources */ = {isa = PBXBuildFile; fileRef = D78A347429E14CF00069242B /* PolicyVc.xib */; };
 		D7B4B48729D2D11400DC74D4 /* TVshowViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B48529D2D11400DC74D4 /* TVshowViewCell.swift */; };
 		D7B4B48829D2D11400DC74D4 /* TVshowViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7B4B48629D2D11400DC74D4 /* TVshowViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -68,6 +74,13 @@
 		D73A8A0F29D2C8D000D6A31C /* TVShowVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowVC.swift; sourceTree = "<group>"; };
 		D73A8A1129D2C95900D6A31C /* TvShowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvShowModel.swift; sourceTree = "<group>"; };
 		D73A8A1329D2CAAA00D6A31C /* APITv.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITv.swift; sourceTree = "<group>"; };
+		D78A346829E1383A0069242B /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		D78A346929E1383A0069242B /* LoginVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginVC.xib; sourceTree = "<group>"; };
+		D78A346C29E1396A0069242B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		D78A346E29E13C610069242B /* NavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavController.swift; sourceTree = "<group>"; };
+		D78A347229E146310069242B /* MovieGuide.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MovieGuide.entitlements; sourceTree = "<group>"; };
+		D78A347329E14CF00069242B /* PolicyVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyVc.swift; sourceTree = "<group>"; };
+		D78A347429E14CF00069242B /* PolicyVc.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PolicyVc.xib; sourceTree = "<group>"; };
 		D7B4B48529D2D11400DC74D4 /* TVshowViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVshowViewCell.swift; sourceTree = "<group>"; };
 		D7B4B48629D2D11400DC74D4 /* TVshowViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVshowViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,13 +115,13 @@
 		D73A89C829CDFA0400D6A31C /* MovieGuide */ = {
 			isa = PBXGroup;
 			children = (
-				D73A8A0A29D28EEF00D6A31C /* LocationManager.swift */,
-				D73A89E629CF2F7800D6A31C /* Extension.swift */,
-				D73A89EA29CF352700D6A31C /* ConfigURL.swift */,
-				D73A8A0D29D2C7D800D6A31C /* ConfigApp.swift */,
+				D78A347229E146310069242B /* MovieGuide.entitlements */,
+				D78A347129E145FA0069242B /* ConfigProject */,
 				D73A89C929CDFA0400D6A31C /* AppDelegate.swift */,
 				D73A89CB29CDFA0400D6A31C /* SceneDelegate.swift */,
 				D73A89CF29CDFA0400D6A31C /* Main.storyboard */,
+				D78A346729E138230069242B /* LoginVc */,
+				D78A347029E140480069242B /* CenterController */,
 				D73A89EC29CF397B00D6A31C /* Moview_Tab1 */,
 				D73A8A0C29D2C56400D6A31C /* TVShow_Tab2 */,
 				D73A89E129CE05EE00D6A31C /* Service */,
@@ -192,6 +205,37 @@
 			path = MovieAPI;
 			sourceTree = "<group>";
 		};
+		D78A346729E138230069242B /* LoginVc */ = {
+			isa = PBXGroup;
+			children = (
+				D78A346829E1383A0069242B /* LoginVC.swift */,
+				D78A346929E1383A0069242B /* LoginVC.xib */,
+				D78A347329E14CF00069242B /* PolicyVc.swift */,
+				D78A347429E14CF00069242B /* PolicyVc.xib */,
+			);
+			path = LoginVc;
+			sourceTree = "<group>";
+		};
+		D78A347029E140480069242B /* CenterController */ = {
+			isa = PBXGroup;
+			children = (
+				D78A346E29E13C610069242B /* NavController.swift */,
+				D78A346C29E1396A0069242B /* TabBarController.swift */,
+			);
+			path = CenterController;
+			sourceTree = "<group>";
+		};
+		D78A347129E145FA0069242B /* ConfigProject */ = {
+			isa = PBXGroup;
+			children = (
+				D73A8A0A29D28EEF00D6A31C /* LocationManager.swift */,
+				D73A89E629CF2F7800D6A31C /* Extension.swift */,
+				D73A8A0D29D2C7D800D6A31C /* ConfigApp.swift */,
+				D73A89EA29CF352700D6A31C /* ConfigURL.swift */,
+			);
+			path = ConfigProject;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -251,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D73A89F529CF46A900D6A31C /* GenresViewCell.xib in Resources */,
+				D78A346B29E1383A0069242B /* LoginVC.xib in Resources */,
 				D73A89F129CF39B600D6A31C /* MovieDetailVC.xib in Resources */,
 				D73A89F929CF534400D6A31C /* WebVC.xib in Resources */,
 				D73A89D629CDFA0500D6A31C /* LaunchScreen.storyboard in Resources */,
@@ -259,6 +304,7 @@
 				D73A8A0329D0123B00D6A31C /* MovieBanner.xib in Resources */,
 				D7B4B48829D2D11400DC74D4 /* TVshowViewCell.xib in Resources */,
 				D73A8A0729D01BBC00D6A31C /* MoviewBannerViewCell.xib in Resources */,
+				D78A347629E14CF00069242B /* PolicyVc.xib in Resources */,
 				D73A89E529CEA40400D6A31C /* PopularMovieViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,6 +321,7 @@
 				D73A8A0629D01BBC00D6A31C /* MoviewBannerViewCell.swift in Sources */,
 				D73A8A0129D0123600D6A31C /* MovieBanner.swift in Sources */,
 				D73A89E729CF2F7800D6A31C /* Extension.swift in Sources */,
+				D78A346F29E13C610069242B /* NavController.swift in Sources */,
 				D73A89EB29CF352700D6A31C /* ConfigURL.swift in Sources */,
 				D73A8A1429D2CAAA00D6A31C /* APITv.swift in Sources */,
 				D73A89F029CF39B600D6A31C /* MovieDetailVC.swift in Sources */,
@@ -284,9 +331,12 @@
 				D73A8A1229D2C95900D6A31C /* TvShowModel.swift in Sources */,
 				D73A8A0B29D28EEF00D6A31C /* LocationManager.swift in Sources */,
 				D73A8A0E29D2C7D800D6A31C /* ConfigApp.swift in Sources */,
+				D78A346A29E1383A0069242B /* LoginVC.swift in Sources */,
 				D73A89F429CF46A900D6A31C /* GenresViewCell.swift in Sources */,
 				D7B4B48729D2D11400DC74D4 /* TVshowViewCell.swift in Sources */,
 				D73A8A1029D2C8D000D6A31C /* TVShowVC.swift in Sources */,
+				D78A346D29E1396A0069242B /* TabBarController.swift in Sources */,
+				D78A347529E14CF00069242B /* PolicyVc.swift in Sources */,
 				D73A89DE29CDFC2500D6A31C /* APIMovie.swift in Sources */,
 				D73A89F829CF534400D6A31C /* WebVC.swift in Sources */,
 			);
@@ -433,6 +483,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MovieGuide/MovieGuide.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -460,6 +511,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MovieGuide/MovieGuide.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
