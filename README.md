@@ -12,6 +12,7 @@ Service -> https://developers.themoviedb.org/3/getting-started/introduction
 - ปรับการเข้า App ครั้งแรกใหม่
 - เพิ่มการ Share Appdelegate
 - ปรับ func บางอย่างไปใช้แบบ Extension เอาจะได้ไม่ต้องใส่ทุกหน้า
+- เพิ่ม service การแสดง Detail Tv series 
 - เพิ่ม service Tvpopular แต่ยังไม่รู้จะใส่หน้าไหน
 สิ่งที่จะทำเพิ่มต่อไป
 1. เพิ่ม Banner Admob + App Open
