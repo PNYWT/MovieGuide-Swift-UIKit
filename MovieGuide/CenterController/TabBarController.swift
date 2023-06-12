@@ -31,7 +31,7 @@ class TabBarController: UITabBarController {
         switch index{
         case 0:
             let vc:NavController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavHome") as! NavController
-            vc.tabBarItem = UITabBarItem.init(title: "Home", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house.fill"))
+            vc.tabBarItem = UITabBarItem.init(title: "Movie", image: UIImage(systemName: "popcorn"), selectedImage: UIImage(systemName: "popcorn.fill"))
             arrPage.append(vc)
             break
         case 1:

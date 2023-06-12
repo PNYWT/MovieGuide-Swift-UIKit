@@ -7,6 +7,41 @@
 
 import Foundation
 
+//MARK: Detail TV
+struct TvSeriesIDDetail: Decodable{
+    let title:String?
+    let overview:String?
+    let posterImageURL:String?
+    let first_air_date:String?
+    let number_of_episodes:Int?
+    let number_of_seasons:Int?
+    let last_air_date:String?
+    let status:String?
+    let genres:[GenresTV]
+    
+    
+    private enum CodingKeys: String, CodingKey{
+        case title = "original_name"
+        case overview = "overview"
+        case posterImageURL = "poster_path"
+        case first_air_date
+        case number_of_episodes
+        case number_of_seasons
+        case last_air_date
+        case status
+        case genres
+    }
+}
+
+struct GenresTV: Decodable{
+    let id:Int?
+    let name:String?
+    
+    private enum CodingKeys: String, CodingKey{
+        case id, name
+    }
+}
+
 //MARK: TopRate
 struct TvTopRateDataModel: Decodable{
     let tvTopRateModel : [TvTopRateModel]

@@ -9,21 +9,25 @@ import UIKit
 
 class TVShowVC: UIViewController {
 
+    @IBOutlet weak var lbTopRate: UILabel!
     @IBOutlet weak var cltvTvShowTopRate: UICollectionView!
     private var tvTopRate:[TvTopRateModel] = []
     private let reuseIden = "TVshowCell"
     
-    override func viewDidAppear(_ animated: Bool) {
-        loadData()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "TV Show"
         self.setupCltv()
+        self.loadData()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        self.lbTopRate.addShadowLabel()
     }
     
     private func loadData(){
-        APITv.getTvShowTopRate { md, err in
+        APITVSeries.getTvShowTopRate { md, err in
             if let mdTmp = md {
                 self.tvTopRate = mdTmp.tvTopRateModel
             }else{
@@ -51,19 +55,26 @@ class TVShowVC: UIViewController {
         
         switch sender{
         case cltvTvShowTopRate:
-            let wItem:CGFloat = self.cltvTvShowTopRate.frame.width*0.3
-            let hItem:CGFloat = self.cltvTvShowTopRate.frame.height - 10
-            layoutCollectionView.itemSize = CGSize.init(width: wItem, height: hItem)
+            let numItemInRow:CGFloat = 2
+            var wItemList:CGFloat = 0
+            var hItemList:CGFloat = 0
+            wItemList = ((cltvTvShowTopRate.bounds.width - CGFloat(xSpace*3)) / numItemInRow) - 0.2
+            hItemList = wItemList + (wItemList*0.40)
             layoutCollectionView.minimumInteritemSpacing = CGFloat(xSpace)
             layoutCollectionView.minimumLineSpacing      = CGFloat(xSpace)
-            layoutCollectionView.scrollDirection = .horizontal
+            layoutCollectionView.itemSize = CGSize.init(width: wItemList, height: hItemList)
+            layoutCollectionView.scrollDirection = .vertical
+            layoutCollectionView.estimatedItemSize = .zero
+            sender.alwaysBounceHorizontal = false
+            sender.isScrollEnabled = true
             sender.collectionViewLayout = layoutCollectionView
-            sender.contentInset = UIEdgeInsets(top: 0, left: CGFloat(xSpace), bottom: 0, right: CGFloat(xSpace))
-            sender.reloadData()
+            sender.contentInset = UIEdgeInsets(top: CGFloat(xSpace+0.2), left: CGFloat(xSpace), bottom: CGFloat(xSpace), right: CGFloat(xSpace))
+            self.cltvTvShowTopRate.reloadData()
         default:
             break
-        }
-    }
+         }
+     }
+
 }
 
 extension TVShowVC:UICollectionViewDelegate, UICollectionViewDataSource{
@@ -78,5 +89,14 @@ extension TVShowVC:UICollectionViewDelegate, UICollectionViewDataSource{
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let md:TvTopRateModel = tvTopRate[indexPath.row]
+        if let id = md.idTV{
+            let vc = DetailSelectVC.init()
+            vc.idInput = id
+            vc.type = .tvSeries
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
     
 }

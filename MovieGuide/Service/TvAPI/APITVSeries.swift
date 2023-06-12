@@ -1,25 +1,20 @@
 //
-//  APIMovie.swift
+//  APITV.swift
 //  MovieGuide
 //
-//  Created by Dev on 24/3/2566 BE.
+//  Created by Dev on 28/3/2566 BE.
 //
 
 import Foundation
 
-enum APIStatus {
-    case REQUEST
-    case RESPONSE
-}
 
-class APIMovie: NSObject, URLSessionDataDelegate{
+class APITVSeries: NSObject, URLSessionDataDelegate{
     
     private var dataTask: URLSessionDataTask?
-    
-    //MARK: Movie
-    static func getPopularMoviesData(completionBlock: @escaping (PopularMovieDataModel?, String?) -> Void) -> Void {
-        let popularMovieURL = ConfigURL.popularMovieURL
-        guard var components = URLComponents(string: popularMovieURL()) else{
+
+    static func getTvShowTopRate(completionBlock: @escaping (TvTopRateDataModel?, String?) -> Void) -> Void {
+        let tvShowTopRateURL = ConfigURL.tvShowTopRateURL()
+        guard var components = URLComponents(string: tvShowTopRateURL) else{
             return
         }
         components.queryItems = [
@@ -45,11 +40,10 @@ class APIMovie: NSObject, URLSessionDataDelegate{
                 print("Data -> Empty")
                 return
             }
-            logResponse(url: popularMovieURL(), status: response.statusCode, data: data, _type: .REQUEST)
-           
+            logResponse(url: tvShowTopRateURL, status: response.statusCode, data: data, _type: .REQUEST)
             do {
                 let decoder = JSONDecoder()
-                let jsonData = try decoder.decode(PopularMovieDataModel.self, from: dataSucc)
+                let jsonData = try decoder.decode(TvTopRateDataModel.self, from: dataSucc)
                 DispatchQueue.main.async {
                     logResponse(url: "\(url)", status: response.statusCode, data: data, _type: .RESPONSE)
                     completionBlock(jsonData, nil)
@@ -60,10 +54,52 @@ class APIMovie: NSObject, URLSessionDataDelegate{
         }.resume()
     }
     
+    //MARK: ไม่รู้จะใส่ตรงไหน ไม่งั้นยิง service เยอะเกินหน้าในเดียวกัน รอหาที่ใส่
+    static func getTvShowPopular(completionBlock: @escaping (TvTopRateDataModel?, String?) -> Void) -> Void {
+        let tvShowTopPopular = ConfigURL.popularMovieURL()
+        guard var components = URLComponents(string: tvShowTopPopular) else{
+            return
+        }
+        components.queryItems = [
+            URLQueryItem(name: "api_key", value: api_key),
+            URLQueryItem(name: "language", value: "en-US"),
+            URLQueryItem(name: "page", value: "1")
+        ]
+        
+        guard let url = components.url else {return}
+        URLSession.shared.dataTask(with: url) { data, res, err in
+            if let error = err{
+                completionBlock(nil, error.localizedDescription)
+                print("URLSession Error -> \(error.localizedDescription)")
+                return
+            }
+            
+            guard let response = res as? HTTPURLResponse else{
+                print("HTTPURLResponse Response -> Empty")
+                return
+            }
+            
+            guard let dataSucc = data else{
+                print("Data -> Empty")
+                return
+            }
+            logResponse(url: tvShowTopPopular, status: response.statusCode, data: data, _type: .REQUEST)
+            do {
+                let decoder = JSONDecoder()
+                let jsonData = try decoder.decode(TvTopRateDataModel.self, from: dataSucc)
+                DispatchQueue.main.async {
+                    logResponse(url: "\(url)", status: response.statusCode, data: data, _type: .RESPONSE)
+                    completionBlock(jsonData, nil)
+                }
+            }catch let error{
+                completionBlock(nil, error.localizedDescription)
+            }
+        }.resume()
+    }
     
-    static func getMovieDetail(idMovie: String,completionBlock: @escaping (MovieIDDetail?, String?) -> Void) -> Void {
-        let movieIDURL = ConfigURL.movieDetail() + idMovie
-        guard var components = URLComponents(string: movieIDURL) else { return }
+    static func getTVDetail(idTV: String,completionBlock: @escaping (TvSeriesIDDetail?, String?) -> Void) -> Void {
+        let tvDetailRL = ConfigURL.tvShowDetail() + idTV
+        guard var components = URLComponents(string: tvDetailRL) else { return }
         components.queryItems = [URLQueryItem(name: "api_key", value: api_key)]
         
         guard let url = components.url else { return }
@@ -84,52 +120,11 @@ class APIMovie: NSObject, URLSessionDataDelegate{
                 print("Data -> Empty")
                 return
             }
-            logResponse(url: movieIDURL, status: response.statusCode, data: data, _type: .REQUEST)
+            logResponse(url: tvDetailRL, status: response.statusCode, data: data, _type: .REQUEST)
             
             do {
                 let decoder = JSONDecoder()
-                let jsonData = try decoder.decode(MovieIDDetail.self, from: dataSucc)
-                DispatchQueue.main.async {
-                    logResponse(url: "\(url)", status: response.statusCode, data: data, _type: .RESPONSE)
-                    completionBlock(jsonData, nil)
-                }
-            }catch let error{
-                completionBlock(nil, error.localizedDescription)
-            }
-        }.resume()
-    }
-    
-    static func getTopMovieData(completionBlock: @escaping (TopMovieDataModel?, String?) -> Void) -> Void {
-        let topMovie = ConfigURL.topMovieURL
-        guard var components = URLComponents(string: topMovie()) else{
-            return
-        }
-        components.queryItems = [
-            URLQueryItem(name: "api_key", value: api_key),
-        ]
-        
-        guard let url = components.url else {return}
-        URLSession.shared.dataTask(with: url) { data, res, err in
-            if let error = err{
-                completionBlock(nil, error.localizedDescription)
-                print("URLSession Error -> \(error.localizedDescription)")
-                return
-            }
-            
-            guard let response = res as? HTTPURLResponse else{
-                print("HTTPURLResponse Response -> Empty")
-                return
-            }
-            
-            guard let dataSucc = data else{
-                print("Data -> Empty")
-                return
-            }
-            logResponse(url: topMovie(), status: response.statusCode, data: data, _type: .REQUEST)
-            
-            do {
-                let decoder = JSONDecoder()
-                let jsonData = try decoder.decode(TopMovieDataModel.self, from: dataSucc)
+                let jsonData = try decoder.decode(TvSeriesIDDetail.self, from: dataSucc)
                 DispatchQueue.main.async {
                     logResponse(url: "\(url)", status: response.statusCode, data: data, _type: .RESPONSE)
                     completionBlock(jsonData, nil)

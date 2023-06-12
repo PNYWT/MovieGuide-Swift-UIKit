@@ -36,12 +36,12 @@ struct PopularMovieModel: Decodable{
 
 
 //MARK: MovieID
-struct MovieIDDataModel: Decodable{
+struct MovieIDDetail: Decodable{
     let tagline:String?
     let title:String?
     let overview:String?
     let imdb_id:String?
-    let genres:[GenresMovieId]
+    let genres:[GenresMovie]
     let release_date:String?
     let budget:Int?
     let runtime:Int?
@@ -54,7 +54,7 @@ struct MovieIDDataModel: Decodable{
     }
 }
 
-struct GenresMovieId: Decodable{
+struct GenresMovie: Decodable{
     let id:Int?
     let name:String?
     

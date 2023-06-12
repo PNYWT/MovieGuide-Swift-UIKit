@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 
-class HomeVC: UIViewController {
+class MovieVC: UIViewController {
     private var movieData:[PopularMovieModel] = []
     @IBOutlet weak var tbvMovie: UITableView!
     private let reuseIden = "MovieCell"
@@ -21,7 +21,7 @@ class HomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Home"
+        self.title = "Movie"
         setupTbv()
         fetchData()
     }
@@ -59,7 +59,7 @@ class HomeVC: UIViewController {
     }
 }
 
-extension HomeVC: UITableViewDelegate, UITableViewDataSource{
+extension MovieVC: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movieData.count
@@ -79,8 +79,9 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let md:PopularMovieModel = movieData[indexPath.row]
         if let id = md.idMovie{
-            let vc = MovieDetailVC.init()
-            vc.movie_id = id
+            let vc = DetailSelectVC.init()
+            vc.idInput = id
+            vc.type = .movie
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -102,6 +103,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource{
             let label = UILabel(frame: CGRect(x: 20, y: 0, width: tableView.frame.width - 40, height: headerView.frame.height))
             label.text = "Popular Moview"
             label.font = UIFont.boldSystemFont(ofSize: 26)
+            label.addShadowLabel()
             headerView.addSubview(label)
             return headerView
         }else{

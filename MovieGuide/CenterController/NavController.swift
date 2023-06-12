@@ -11,9 +11,6 @@ class NavController: UINavigationController{
     
     override func viewDidLoad() {
         setAppearance()
-        
-        
-        
     }
     
     private func setAppearance(){
@@ -42,7 +39,7 @@ extension NavController: UINavigationControllerDelegate{
     
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         switch viewController{
-        case is HomeVC, is TVShowVC:
+        case is MovieVC, is TVShowVC:
             tabBarController?.tabBar.isHidden = false
             viewController.navigationController?.isNavigationBarHidden = false
             break
@@ -54,7 +51,7 @@ extension NavController: UINavigationControllerDelegate{
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         
         switch viewController{
-        case is HomeVC, is TVShowVC:
+        case is MovieVC, is TVShowVC:
             tabBarController?.tabBar.isHidden = false
             break
         default:

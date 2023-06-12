@@ -50,11 +50,33 @@ func convertToTimeFormat(_ minutes: Int) -> String {
 }
 
 //MARK: Add addShadow
-func addShadow(to label: UILabel, withOffset offset: CGSize) {
-    label.layer.shadowColor = UIColor.black.cgColor
-    label.layer.shadowOffset = offset
-    label.layer.shadowOpacity = 1.0
-    label.layer.shadowRadius = 2.0
+extension UILabel{
+    func addShadowLabel(){
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
+        self.layer.shadowOpacity = 1.0
+        self.layer.shadowRadius = 2.0
+    }
+}
+
+extension UIImageView{
+    func getImageDataFrom(url: URL){
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let error = error {
+                print("DataTask error: \(error.localizedDescription)")
+                return
+            }
+            guard let data = data else {
+                print("Empty Data")
+                return
+            }
+            DispatchQueue.main.async {
+                if let image = UIImage(data: data) {
+                    self.image = image
+                }
+            }
+        }.resume()
+    }
 }
 
 //MARK: Add color AttributedString
@@ -72,22 +94,22 @@ func getAttributedString(arrayText:[String]?, arrayColors:[UIColor]?, arrayFonts
 }
 
 extension UIApplication {
-    class func getTopViewController(base: UIViewController? = UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController) -> UIViewController? {
+    class func getTopViewController(base: UIViewController? = UIApplication.shared.connectedScenes
+                                            .compactMap { $0 as? UIWindowScene }
+                                            .flatMap { $0.windows }
+                                            .filter { $0.isKeyWindow }
+                                            .first?
+                                            .rootViewController) -> UIViewController? {
 
         if let nav = base as? UINavigationController {
             return getTopViewController(base: nav.visibleViewController)
-
         } else if let tab = base as? UITabBarController, let selected = tab.selectedViewController {
             return getTopViewController(base: selected)
-
         } else if let presented = base?.presentedViewController {
             return getTopViewController(base: presented)
         }
+
         return base
     }
 }
 
-
-class KeysUSDF{
-    static let saveLogin = "saveLogin"
-}

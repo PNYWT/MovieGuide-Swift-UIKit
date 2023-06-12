@@ -114,8 +114,8 @@ extension MovieBanner: UICollectionViewDataSource, UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let md:TopMovieModel = dataBanner[indexPath.row]
         if let topVC = UIApplication.getTopViewController(), let id = md.idTopMovie {
-            let vc = MovieDetailVC.init()
-            vc.movie_id = id
+            let vc = DetailSelectVC.init()
+            vc.idInput = id
             topVC.navigationController?.pushViewController(vc, animated: true)
         }
     }

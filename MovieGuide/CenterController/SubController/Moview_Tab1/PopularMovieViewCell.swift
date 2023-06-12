@@ -45,28 +45,6 @@ class PopularMovieViewCell: UITableViewCell {
             self.imgMovie.image = UIImage.init(systemName: "")
             return
         }
-        self.imgMovie.image = nil
-        
-        getImageDataFrom(url: posterImageURL)
-        
-    }
-    
-    // MARK: - Get image data
-    private func getImageDataFrom(url: URL){
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if let error = error {
-                print("DataTask error: \(error.localizedDescription)")
-                return
-            }
-            guard let data = data else {
-                print("Empty Data")
-                return
-            }
-            DispatchQueue.main.async {
-                if let image = UIImage(data: data) {
-                    self.imgMovie.image = image
-                }
-            }
-        }.resume()
+        self.imgMovie.getImageDataFrom(url: posterImageURL)
     }
 }

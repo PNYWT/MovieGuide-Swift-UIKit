@@ -86,13 +86,7 @@ class LoginVC: UIViewController {
     
     @objc func notNowGoMain(){
         UserDefaults.standard.set(true, forKey: KeysUSDF.saveLogin)
-        guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else {
-            return
-        }
-        let window = sceneDelegate.window
-        let tabBar = TabBarController.init()
-        window?.rootViewController = tabBar
-        window?.makeKeyAndVisible()
+        AppDelegate.shareAppDelegate().goMain()
     }
     
     @objc func tapTerm(){
