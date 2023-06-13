@@ -16,6 +16,6 @@ Service -> https://developers.themoviedb.org/3/getting-started/introduction
 - เพิ่ม service Tvpopular แต่ยังไม่รู้จะใส่หน้าไหน
 สิ่งที่จะทำเพิ่มต่อไป
 1. เพิ่ม Banner Admob + App Open
-2. Tab 1 ทำเป็น 2 Segment : Popular และ Upcoming(Banner) อยู่หน้าเดียวกัน, Top Rate --- ปัจจุบันตอนนี้แสดงอยู่คือ Banner ใช้ data Popular, table ใช้ Top Rate ต้องปรับใหม่
+2. Tab 1 ทำเป็น 2 Segment : Popular และ Upcoming(Banner) อยู่หน้าเดียวกัน, Top Rate --- ปัจจุบันตอนนี้แสดงอยู่คือ Banner ใช้ data Top Rate
 3. Tab 2 ทำเป็น 4 Segment : Airing Today, On The Air, Popular, Top Rated(แสดงอยู่ปัจจุบัน)
 4. เพิ่ม Tab 3 โชว์ icon app + version app + Copy right ----> (พวกแชร์, ให้คะแนนแอพ ไม่ต้องเพิ่ม ไม่ได้อัพ Store)
