@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FirstMovieVC" customModule="MovieGuide" customModuleProvider="target">
+            <connections>
+                <outlet property="tbvMovie" destination="QfR-r8-bHk" id="v6C-Pi-B3E"/>
+                <outlet property="vMovieBanner" destination="uaf-vV-iaK" id="T78-5g-mDJ"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uaf-vV-iaK" customClass="MovieBanner" customModule="MovieGuide" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="59" width="393" height="150"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="P6C-WL-tCv"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="QfR-r8-bHk">
+                    <rect key="frame" x="0.0" y="209" width="393" height="609"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="QfR-r8-bHk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="3WH-Gw-zed"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="QfR-r8-bHk" secondAttribute="bottom" id="E1L-Nh-shf"/>
+                <constraint firstItem="uaf-vV-iaK" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="QTL-R2-76I"/>
+                <constraint firstItem="uaf-vV-iaK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="SsO-gS-F1s"/>
+                <constraint firstAttribute="trailing" secondItem="uaf-vV-iaK" secondAttribute="trailing" id="mmR-cD-lxf"/>
+                <constraint firstItem="QfR-r8-bHk" firstAttribute="top" secondItem="uaf-vV-iaK" secondAttribute="bottom" id="o3r-xB-SGe"/>
+                <constraint firstAttribute="trailing" secondItem="QfR-r8-bHk" secondAttribute="trailing" id="pWw-jx-p1A"/>
+                <constraint firstItem="QfR-r8-bHk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="rEk-56-xaG"/>
+            </constraints>
+            <point key="canvasLocation" x="36" y="20"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

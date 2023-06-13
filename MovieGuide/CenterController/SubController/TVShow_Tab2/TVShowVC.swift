@@ -17,7 +17,6 @@ class TVShowVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "TV Show"
         self.setupCltv()
         self.loadData()
     }

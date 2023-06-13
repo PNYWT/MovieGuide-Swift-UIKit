@@ -33,6 +33,7 @@ class DetailSelectVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchData()
+        self.view.backgroundColor = .lightGray
         // Do any additional setup after loading the view.
     }
     

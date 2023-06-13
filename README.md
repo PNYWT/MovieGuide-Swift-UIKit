@@ -19,3 +19,14 @@ Service -> https://developers.themoviedb.org/3/getting-started/introduction
 2. Tab 1 ทำเป็น 2 Segment : Popular และ Upcoming(Banner) อยู่หน้าเดียวกัน, Top Rate --- ปัจจุบันตอนนี้แสดงอยู่คือ Banner ใช้ data Top Rate
 3. Tab 2 ทำเป็น 4 Segment : Airing Today, On The Air, Popular, Top Rated(แสดงอยู่ปัจจุบัน)
 4. เพิ่ม Tab 3 โชว์ icon app + version app + Copy right ----> (พวกแชร์, ให้คะแนนแอพ ไม่ต้องเพิ่ม ไม่ได้อัพ Store)
+
+14/06/2023
+- ปรับ Tabbar 1 ใหม่ เพิ่ม 2 Segment แยกเป็น Popular กับ Top Rated
+- ปรับ service การแสดงผลของ Tabbar 1 ทั้ง 2 segment ใหม่
+- ดักการแสดงผล Banner Coming กรณีไม่มีค่ามา สั่งซ่อนไป
+- ปรับการแสดงผล Tabbar Background ใหม่
+สิ่งที่จะทำเพิ่มต่อไป
+1. เพิ่ม Banner Admob + App Open
+2. Tab 2 ทำเป็น 4 Segment : Airing Today, On The Air, Popular, Top Rated(แสดงอยู่ปัจจุบัน)
+3. เพิ่ม Tab 3 โชว์ icon app + version app + Copy right ----> (พวกแชร์, ให้คะแนนแอพ ไม่ต้องเพิ่ม ไม่ได้อัพ Store)
+4. น่าจะต้องเก็บ catch ภาพ โดยให้สั่งเก็บแต่ละวัน ขึ้นวันใหม่ให้ลบ catch เก่าทิ้ง แล้วเก็บอันใหม่ น่าจะช่วยเรื่องโหลดภาพช้าเวลาเข้าแอพภายในวันหลายๆ ครั้ง

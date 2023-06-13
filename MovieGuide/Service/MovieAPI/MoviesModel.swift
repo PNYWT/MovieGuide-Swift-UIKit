@@ -73,13 +73,41 @@ struct TopMovieDataModel: Decodable{
 }
 
 struct TopMovieModel: Decodable{
+    let idMovie:Int?
+    let title:String?
+    let year:String?
+    let rateing:Double?
+    let posterImageURL:String?
+    let overview:String?
+    
+    private enum CodingKeys: String, CodingKey{
+        case idMovie = "id"
+        case title, overview
+        case year = "release_date"
+        case rateing = "vote_average"
+        case posterImageURL = "poster_path"
+    }
+}
+
+//MARK: UpComing
+struct UpComingDataModel: Decodable{
+    let upComingModel : [UpComingModel]
+    let page:Int?
+    
+    private enum CodingKeys: String, CodingKey{
+        case upComingModel = "results"
+        case page
+    }
+}
+
+struct UpComingModel: Decodable{
     let idTopMovie:Int?
     let posterImageURL:String?
     let voteScore:Double?
     
     private enum CodingKeys: String, CodingKey{
         case idTopMovie = "id"
-        case posterImageURL = "poster_path"
+        case posterImageURL = "backdrop_path"
         case voteScore = "vote_average"
     }
 }

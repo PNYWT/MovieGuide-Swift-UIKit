@@ -25,6 +25,10 @@ class ConfigURL:NSObject{
         return String(format: "%@/movie/top_rated", domainString)
     }
     
+    static func upcomingMovieURL()->String{
+        return String(format: "%@/movie/upcoming", domainString)
+    }
+    
     //TV Series
     static func tvShowTopRateURL()->String{
         return String(format: "%@/tv/top_rated", domainString)

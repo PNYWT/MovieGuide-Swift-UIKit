@@ -49,7 +49,7 @@ func convertToTimeFormat(_ minutes: Int) -> String {
     return "\(hoursString)h \(minutesString)m"
 }
 
-//MARK: Add addShadow
+//MARK: extension UILabel
 extension UILabel{
     func addShadowLabel(){
         self.layer.shadowColor = UIColor.black.cgColor
@@ -93,6 +93,7 @@ func getAttributedString(arrayText:[String]?, arrayColors:[UIColor]?, arrayFonts
     return finalAttributedString
 }
 
+//MARK: extension UIApplication
 extension UIApplication {
     class func getTopViewController(base: UIViewController? = UIApplication.shared.connectedScenes
                                             .compactMap { $0 as? UIWindowScene }
@@ -110,6 +111,30 @@ extension UIApplication {
         }
 
         return base
+    }
+}
+
+//MARK: extension UIColor
+extension UIColor{
+    convenience init?(hex: String, alpha: CGFloat = 1.0) {
+        var hexString = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+
+        if hexString.hasPrefix("#") {
+            hexString.remove(at: hexString.startIndex)
+        }
+
+        guard hexString.count == 6 else {
+            return nil
+        }
+
+        var rgbValue: UInt64 = 0
+        Scanner(string: hexString).scanHexInt64(&rgbValue)
+
+        let red = CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0
+        let green = CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0
+        let blue = CGFloat(rgbValue & 0x0000FF) / 255.0
+
+        self.init(red: red, green: green, blue: blue, alpha: alpha)
     }
 }
 

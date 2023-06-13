@@ -45,47 +45,52 @@
             </objects>
             <point key="canvasLocation" x="-834" y="4"/>
         </scene>
-        <!--MovieVC-->
+        <!--Main MovieVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MovieVC" customModule="MovieGuide" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainMovieVC" customModule="MovieGuide" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="DaM-Al-n9n">
-                                <rect key="frame" x="0.0" y="253" width="393" height="599"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VCr-22-0WF" customClass="MovieBanner" customModule="MovieGuide" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="103" width="393" height="150"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fUN-Ry-ZC9">
+                                <rect key="frame" x="0.0" y="156" width="393" height="613"/>
+                            </scrollView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="aHh-Gj-YhG">
+                                <rect key="frame" x="78.666666666666742" y="103" width="235.66666666666652" height="46"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="AWp-XT-Kc0"/>
+                                    <constraint firstAttribute="height" constant="45" id="0YM-h5-t07"/>
                                 </constraints>
-                            </view>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                                <connections>
+                                    <action selector="selectSegment:" destination="BYZ-38-t0r" eventType="valueChanged" id="tpN-Za-pQ3"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="VCr-22-0WF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="3An-1E-rRA"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VCr-22-0WF" secondAttribute="trailing" id="Os6-Yv-62l"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DaM-Al-n9n" secondAttribute="trailing" id="eS7-0q-f5R"/>
-                            <constraint firstItem="DaM-Al-n9n" firstAttribute="top" secondItem="VCr-22-0WF" secondAttribute="bottom" id="ewj-X7-IIr"/>
-                            <constraint firstItem="DaM-Al-n9n" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="lyT-JO-9zc"/>
-                            <constraint firstItem="VCr-22-0WF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tY0-Ry-aDE"/>
-                            <constraint firstAttribute="bottom" secondItem="DaM-Al-n9n" secondAttribute="bottom" id="zXI-zr-Wg5"/>
+                            <constraint firstItem="aHh-Gj-YhG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="68q-Tx-Nh0"/>
+                            <constraint firstItem="fUN-Ry-ZC9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="EfN-JX-9Fu"/>
+                            <constraint firstItem="aHh-Gj-YhG" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.6" id="T8G-Yg-d2H"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fUN-Ry-ZC9" secondAttribute="bottom" id="aG8-d7-5oR"/>
+                            <constraint firstAttribute="trailing" secondItem="fUN-Ry-ZC9" secondAttribute="trailing" id="hcf-aB-JeS"/>
+                            <constraint firstItem="fUN-Ry-ZC9" firstAttribute="top" secondItem="aHh-Gj-YhG" secondAttribute="bottom" constant="8" id="jqQ-O6-3wL"/>
+                            <constraint firstItem="aHh-Gj-YhG" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="oPb-re-Sa0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ia0-DC-ZpI"/>
                     <connections>
-                        <outlet property="tbvMovie" destination="DaM-Al-n9n" id="2W8-Ly-K2h"/>
-                        <outlet property="vMovieBanner" destination="VCr-22-0WF" id="coz-dh-7HC"/>
+                        <outlet property="scrView" destination="fUN-Ry-ZC9" id="fjB-pR-Baq"/>
+                        <outlet property="segmentControl" destination="aHh-Gj-YhG" id="QLI-1O-Wqa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="140" y="4"/>
+            <point key="canvasLocation" x="139.69465648854961" y="3.5211267605633805"/>
         </scene>
         <!--Item-->
         <scene sceneID="Snq-gJ-BP4">

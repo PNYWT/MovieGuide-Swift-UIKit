@@ -7,15 +7,19 @@
 
 import UIKit
 
-class MovieBanner: UIView{
+protocol MovieBannerDelegate{
+    func didselectIndex(movieId:Int)
+}
 
+class MovieBanner: UIView{
+    var delegate:MovieBannerDelegate?
     @IBOutlet var contentView: UIView!
     
     @IBOutlet weak var cltvBanner: UICollectionView!
     @IBOutlet weak var pagecontrolCltv: UIPageControl!
     private let reuseIden = "BannerCell"
     
-    private var dataBanner:[TopMovieModel] = []
+    private var dataBanner:[UpComingModel] = []
     private var fakeIndex = 0
     
     var timer: Timer?
@@ -32,7 +36,7 @@ class MovieBanner: UIView{
         commitInit()
     }
     
-    func acceptDataBanner(md:[TopMovieModel]?){
+    func acceptDataBanner(md:[UpComingModel]?){
         if let md_Tmp = md{
             dataBanner = md_Tmp
             setupCltv()
@@ -106,17 +110,15 @@ extension MovieBanner: UICollectionViewDataSource, UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIden, for: indexPath) as! MoviewBannerViewCell
-        let md:TopMovieModel = dataBanner[indexPath.row]
+        let md:UpComingModel = dataBanner[indexPath.row]
         cell.setUI(md: md)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let md:TopMovieModel = dataBanner[indexPath.row]
-        if let topVC = UIApplication.getTopViewController(), let id = md.idTopMovie {
-            let vc = DetailSelectVC.init()
-            vc.idInput = id
-            topVC.navigationController?.pushViewController(vc, animated: true)
+        let md:UpComingModel = dataBanner[indexPath.row]
+        if let id = md.idTopMovie{
+            self.delegate?.didselectIndex(movieId: id)
         }
     }
 }

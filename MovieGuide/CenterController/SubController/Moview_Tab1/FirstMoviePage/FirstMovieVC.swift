@@ -1,15 +1,15 @@
 //
-//  ViewController.swift
+//  FirstMovieVC.swift
 //  MovieGuide
 //
-//  Created by Dev on 24/3/2566 BE.
+//  Created by CallmeOni on 13/6/2566 BE.
 //
 
 import UIKit
-import CoreLocation
 
-class MovieVC: UIViewController {
-    private var movieData:[PopularMovieModel] = []
+class FirstMovieVC: UIViewController {
+    
+    private var moviePopularData:[PopularMovieModel] = []
     @IBOutlet weak var tbvMovie: UITableView!
     private let reuseIden = "MovieCell"
     
@@ -21,7 +21,6 @@ class MovieVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Movie"
         setupTbv()
         fetchData()
     }
@@ -35,19 +34,33 @@ class MovieVC: UIViewController {
     private func fetchData(){
         APIMovie.getPopularMoviesData { md, err in
             if let md_tmp = md{
-                self.movieData = md_tmp.moviesModel
+                self.moviePopularData = md_tmp.moviesModel
             }
             DispatchQueue.main.async {
                 self.tbvMovie.reloadData()
             }
         }
         
-        APIMovie.getTopMovieData { md, err in
-            if let mdTmp = md{
+        //Upcoming
+        APIMovie.getUpcomingMovieData { responseData, error in
+            if let md = responseData{
                 DispatchQueue.main.async {
-                    self.vMovieBanner.acceptDataBanner(md: mdTmp.topMovieModel)
+                    if self.vMovieBanner.isHidden{
+                        self.vMovieBanner.isHidden = false
+                        self.vMovieBanner.translatesAutoresizingMaskIntoConstraints = false
+                        NSLayoutConstraint.activate([
+                            self.vMovieBanner.heightAnchor.constraint(equalToConstant: 150)
+                        ])
+                    }
+                    self.vMovieBanner.acceptDataBanner(md: md.upComingModel)
+                    self.vMovieBanner.delegate = self
                 }
             }else{
+                self.vMovieBanner.translatesAutoresizingMaskIntoConstraints = false
+                NSLayoutConstraint.activate([
+                    self.vMovieBanner.heightAnchor.constraint(equalToConstant: 0)
+                ])
+                self.vMovieBanner.isHidden = true
                 
             }
         }
@@ -59,15 +72,15 @@ class MovieVC: UIViewController {
     }
 }
 
-extension MovieVC: UITableViewDelegate, UITableViewDataSource{
+extension FirstMovieVC: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movieData.count
+        return moviePopularData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIden, for: indexPath) as! PopularMovieViewCell
-        let md:PopularMovieModel = movieData[indexPath.row]
+        let md:PopularMovieModel = moviePopularData[indexPath.row]
         cell.setupUI(title: md.title, releaseDate: md.year, rating: md.rateing, overview: md.overview, poster: md.posterImageURL)
         return cell
     }
@@ -77,7 +90,7 @@ extension MovieVC: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let md:PopularMovieModel = movieData[indexPath.row]
+        let md:PopularMovieModel = moviePopularData[indexPath.row]
         if let id = md.idMovie{
             let vc = DetailSelectVC.init()
             vc.idInput = id
@@ -87,21 +100,21 @@ extension MovieVC: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if movieData.count > 0{
-            return 50
+        if moviePopularData.count > 0{
+            return 30.0
         }else{
             return 0
         }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if movieData.count > 0{
-            let headerViewHeight = 50.0
+        if moviePopularData.count > 0{
+            let headerViewHeight = 30.0
             let headerView: UIView = UIView.init()
             headerView.frame = CGRect.init(x: 0, y: 0, width: tableView.frame.size.width, height: headerViewHeight)
             headerView.backgroundColor = tableView.backgroundColor
             let label = UILabel(frame: CGRect(x: 20, y: 0, width: tableView.frame.width - 40, height: headerView.frame.height))
-            label.text = "Popular Moview"
+            label.text = "Popular Movie"
             label.font = UIFont.boldSystemFont(ofSize: 26)
             label.addShadowLabel()
             headerView.addSubview(label)
@@ -111,5 +124,14 @@ extension MovieVC: UITableViewDelegate, UITableViewDataSource{
             headerView.frame = CGRect.init(x: 0, y: 0, width: tableView.frame.size.width, height: 0)
             return headerView
         }
+    }
+}
+
+extension FirstMovieVC: MovieBannerDelegate{
+    func didselectIndex(movieId: Int) {
+        let vc = DetailSelectVC.init()
+        vc.type = .movie
+        vc.idInput = movieId
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

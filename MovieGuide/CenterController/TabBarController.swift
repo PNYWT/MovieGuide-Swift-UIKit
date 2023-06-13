@@ -13,7 +13,6 @@ class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupTab(howMany: 2-1)
     }
     
@@ -24,7 +23,7 @@ class TabBarController: UITabBarController {
         
         self.viewControllers = arrPage
         self.setViewControllers(arrPage, animated: true)
-//        self.tabBar.barTintColor = .white
+        self.selectedIndex = 0
     }
     
     private func setIndexBar(index:Int){

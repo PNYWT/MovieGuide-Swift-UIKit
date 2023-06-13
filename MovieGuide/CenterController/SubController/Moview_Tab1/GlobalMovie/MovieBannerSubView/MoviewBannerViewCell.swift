@@ -18,7 +18,7 @@ class MoviewBannerViewCell: UICollectionViewCell {
         // Initialization code
     }
     
-    func setUI(md:TopMovieModel?){
+    func setUI(md:UpComingModel?){
         if let md_Tmp = md{
             guard let posterString = md_Tmp.posterImageURL else {return}
             let urlString = DomainPath.pathImg(posterString: posterString)

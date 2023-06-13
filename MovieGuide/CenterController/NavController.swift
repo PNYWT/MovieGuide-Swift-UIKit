@@ -29,9 +29,15 @@ class NavController: UINavigationController{
         self.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem.init(title: "", style: .plain, target: nil, action: nil)
         
         self.delegate = self
-        if #available(iOS 14.0, *) {
-            navigationItem.backButtonDisplayMode = .minimal
-        }
+        self.navigationItem.backButtonDisplayMode = .minimal
+        
+        //config tabbar background
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor.init(hex: "d12d43")
+        tabBarController?.tabBar.standardAppearance = appearance
+        tabBarController?.tabBar.tintColor = .white
+        tabBarController?.tabBar.scrollEdgeAppearance = tabBarController?.tabBar.standardAppearance
     }
 }
 
@@ -39,9 +45,18 @@ extension NavController: UINavigationControllerDelegate{
     
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         switch viewController{
-        case is MovieVC, is TVShowVC:
+        case is MainMovieVC, is TVShowVC:
             tabBarController?.tabBar.isHidden = false
             viewController.navigationController?.isNavigationBarHidden = false
+            
+            if viewController.isKind(of: MainMovieVC.classForCoder()){
+                viewController.title = "Movie"
+            }else if viewController.isKind(of: TVShowVC.classForCoder()){
+                viewController.title = "TV Show"
+            }else if viewController.isKind(of: DetailSelectVC.classForCoder()){
+                viewController.title = "Detail"
+                tabBarController?.tabBar.isHidden = true
+            }
             break
         default:
             tabBarController?.tabBar.isHidden = true
@@ -51,8 +66,16 @@ extension NavController: UINavigationControllerDelegate{
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         
         switch viewController{
-        case is MovieVC, is TVShowVC:
+        case is MainMovieVC, is TVShowVC, is DetailSelectVC:
             tabBarController?.tabBar.isHidden = false
+            if viewController.isKind(of: MainMovieVC.classForCoder()){
+                viewController.title = "Movie"
+            }else if viewController.isKind(of: TVShowVC.classForCoder()){
+                viewController.title = "TV Show"
+            }else if viewController.isKind(of: DetailSelectVC.classForCoder()){
+                viewController.title = "Detail"
+                tabBarController?.tabBar.isHidden = true
+            }
             break
         default:
             tabBarController?.tabBar.isHidden = true
