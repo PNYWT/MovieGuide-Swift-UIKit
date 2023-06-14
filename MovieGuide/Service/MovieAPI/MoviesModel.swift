@@ -107,7 +107,7 @@ struct UpComingModel: Decodable{
     
     private enum CodingKeys: String, CodingKey{
         case idTopMovie = "id"
-        case posterImageURL = "backdrop_path"
+        case posterImageURL = "poster_path"
         case voteScore = "vote_average"
     }
 }

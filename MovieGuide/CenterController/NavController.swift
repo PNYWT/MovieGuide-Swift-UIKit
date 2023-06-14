@@ -34,7 +34,7 @@ class NavController: UINavigationController{
         //config tabbar background
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor.init(hex: "d12d43")
+        appearance.backgroundColor = .customRed
         tabBarController?.tabBar.standardAppearance = appearance
         tabBarController?.tabBar.tintColor = .white
         tabBarController?.tabBar.scrollEdgeAppearance = tabBarController?.tabBar.standardAppearance

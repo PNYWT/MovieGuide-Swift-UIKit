@@ -1,13 +1,13 @@
 //
-//  TVShowVC.swift
+//  TopRateTVSeriesVC.swift
 //  MovieGuide
 //
-//  Created by Dev on 28/3/2566 BE.
+//  Created by CallmeOni on 14/6/2566 BE.
 //
 
 import UIKit
 
-class TVShowVC: UIViewController {
+class TopRateTVSeriesVC: UIViewController {
 
     @IBOutlet weak var lbTopRate: UILabel!
     @IBOutlet weak var cltvTvShowTopRate: UICollectionView!
@@ -76,7 +76,7 @@ class TVShowVC: UIViewController {
 
 }
 
-extension TVShowVC:UICollectionViewDelegate, UICollectionViewDataSource{
+extension TopRateTVSeriesVC:UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return tvTopRate.count
     }
@@ -97,5 +97,4 @@ extension TVShowVC:UICollectionViewDelegate, UICollectionViewDataSource{
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
-    
 }

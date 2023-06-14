@@ -6,7 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -57,7 +56,7 @@
                                 <rect key="frame" x="0.0" y="156" width="393" height="613"/>
                             </scrollView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="aHh-Gj-YhG">
-                                <rect key="frame" x="78.666666666666742" y="103" width="235.66666666666652" height="46"/>
+                                <rect key="frame" x="78.666666666666671" y="103" width="235.66666666666663" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="0YM-h5-t07"/>
                                 </constraints>
@@ -84,8 +83,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="Ia0-DC-ZpI"/>
                     <connections>
-                        <outlet property="scrView" destination="fUN-Ry-ZC9" id="fjB-pR-Baq"/>
-                        <outlet property="segmentControl" destination="aHh-Gj-YhG" id="QLI-1O-Wqa"/>
+                        <outlet property="scrMovie" destination="fUN-Ry-ZC9" id="fjB-pR-Baq"/>
+                        <outlet property="segmentControlMovie" destination="aHh-Gj-YhG" id="QLI-1O-Wqa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -117,52 +116,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GCa-rz-OJm">
-                                <rect key="frame" x="0.0" y="141" width="393" height="628"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SdE-xY-de3">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="VVc-VC-Twl">
-                                        <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Mnl-G5-LBv">
-                                            <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top Rate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q4t-TZ-zBv">
-                                <rect key="frame" x="16" y="103" width="361" height="30"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rfG-ia-X68">
+                                <rect key="frame" x="0.0" y="156" width="393" height="613"/>
+                            </scrollView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rKf-cZ-akw">
+                                <rect key="frame" x="8" y="103" width="377" height="46"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="TZB-eB-S6A"/>
+                                    <constraint firstAttribute="height" constant="45" id="v4W-em-eWF"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentTV:" destination="UDx-An-peL" eventType="valueChanged" id="4FK-gD-NNi"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="QUP-sl-pL8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="QUP-sl-pL8" firstAttribute="bottom" secondItem="GCa-rz-OJm" secondAttribute="bottom" id="AYC-0W-JB1"/>
-                            <constraint firstItem="GCa-rz-OJm" firstAttribute="top" secondItem="q4t-TZ-zBv" secondAttribute="bottom" constant="8" symbolic="YES" id="DSD-n2-Ik6"/>
-                            <constraint firstItem="GCa-rz-OJm" firstAttribute="leading" secondItem="QUP-sl-pL8" secondAttribute="leading" id="JRT-65-1Qp"/>
-                            <constraint firstItem="q4t-TZ-zBv" firstAttribute="leading" secondItem="QUP-sl-pL8" secondAttribute="leading" constant="16" id="XIM-JW-6DG"/>
-                            <constraint firstItem="QUP-sl-pL8" firstAttribute="trailing" secondItem="q4t-TZ-zBv" secondAttribute="trailing" constant="16" id="e7e-bj-BMe"/>
-                            <constraint firstItem="q4t-TZ-zBv" firstAttribute="top" secondItem="QUP-sl-pL8" secondAttribute="top" id="hlE-Cg-hMW"/>
-                            <constraint firstItem="QUP-sl-pL8" firstAttribute="trailing" secondItem="GCa-rz-OJm" secondAttribute="trailing" id="pM0-CF-slz"/>
+                            <constraint firstItem="rfG-ia-X68" firstAttribute="top" secondItem="rKf-cZ-akw" secondAttribute="bottom" constant="8" id="Gj8-fO-Me1"/>
+                            <constraint firstItem="rKf-cZ-akw" firstAttribute="top" secondItem="QUP-sl-pL8" secondAttribute="top" id="Ss0-k0-xA7"/>
+                            <constraint firstItem="rfG-ia-X68" firstAttribute="leading" secondItem="zy7-pF-fmP" secondAttribute="leading" id="Sy3-fu-JVy"/>
+                            <constraint firstItem="QUP-sl-pL8" firstAttribute="trailing" secondItem="rKf-cZ-akw" secondAttribute="trailing" constant="8" id="Vch-MT-2vR"/>
+                            <constraint firstItem="QUP-sl-pL8" firstAttribute="trailing" secondItem="rfG-ia-X68" secondAttribute="trailing" id="X31-EU-m2K"/>
+                            <constraint firstItem="rKf-cZ-akw" firstAttribute="leading" secondItem="QUP-sl-pL8" secondAttribute="leading" constant="8" id="ZGI-ZP-9wd"/>
+                            <constraint firstItem="rKf-cZ-akw" firstAttribute="centerX" secondItem="QUP-sl-pL8" secondAttribute="centerX" id="tFa-qI-kNs"/>
+                            <constraint firstItem="rfG-ia-X68" firstAttribute="bottom" secondItem="QUP-sl-pL8" secondAttribute="bottom" id="yoI-QE-brz"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zVf-ki-mMC"/>
                     <connections>
-                        <outlet property="cltvTvShowTopRate" destination="GCa-rz-OJm" id="vCL-4S-9bS"/>
-                        <outlet property="lbTopRate" destination="q4t-TZ-zBv" id="sUV-Oc-Cih"/>
+                        <outlet property="scrTV" destination="rfG-ia-X68" id="PpO-JY-Ktt"/>
+                        <outlet property="segmentControlTV" destination="rKf-cZ-akw" id="OWm-UE-nFJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sd1-jp-doN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

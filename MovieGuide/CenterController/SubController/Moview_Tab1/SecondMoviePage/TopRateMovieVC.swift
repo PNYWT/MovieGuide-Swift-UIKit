@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SecondMovieVC: UIViewController {
+class TopRateMovieVC: UIViewController {
 
     @IBOutlet weak var tbvMovieTopRate: UITableView!
     private let reuseIden = "MovieCell"
@@ -40,7 +40,7 @@ class SecondMovieVC: UIViewController {
     }
 }
 
-extension SecondMovieVC: UITableViewDataSource, UITableViewDelegate{
+extension TopRateMovieVC: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movieTopRateData.count
     }

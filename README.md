@@ -30,3 +30,13 @@ Service -> https://developers.themoviedb.org/3/getting-started/introduction
 2. Tab 2 ทำเป็น 4 Segment : Airing Today, On The Air, Popular, Top Rated(แสดงอยู่ปัจจุบัน)
 3. เพิ่ม Tab 3 โชว์ icon app + version app + Copy right ----> (พวกแชร์, ให้คะแนนแอพ ไม่ต้องเพิ่ม ไม่ได้อัพ Store)
 4. น่าจะต้องเก็บ catch ภาพ โดยให้สั่งเก็บแต่ละวัน ขึ้นวันใหม่ให้ลบ catch เก่าทิ้ง แล้วเก็บอันใหม่ น่าจะช่วยเรื่องโหลดภาพช้าเวลาเข้าแอพภายในวันหลายๆ ครั้ง
+
+14/06/2023
+- ปรับ Tabbar 2 ใหม่ และเพิ่มหน้า on air ไว้เหลือใส่ Data on air
+- เพิ่ม service on air
+- เจอบัค Date format ของ TV Detail รอแก้ไข
+สิ่งที่จะทำเพิ่มต่อไป
+1. เพิ่ม Banner Admob + App Open
+2. เพิ่มหน้า On air ใน Tab2 segment 3
+3. เพิ่ม Tab 3 โชว์ icon app + version app + Copy right ----> (พวกแชร์, ให้คะแนนแอพ ไม่ต้องเพิ่ม ไม่ได้อัพ Store)
+4. น่าจะต้องเก็บ catch ภาพ โดยให้สั่งเก็บแต่ละวัน ขึ้นวันใหม่ให้ลบ catch เก่าทิ้ง แล้วเก็บอันใหม่ น่าจะช่วยเรื่องโหลดภาพช้าเวลาเข้าแอพภายในวันหลายๆ ครั้ง

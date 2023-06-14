@@ -42,7 +42,9 @@ class ConfigURL:NSObject{
         return String(format: "%@/tv/popular", domainString)
     }
     
-    
+    static func tvShowOnAir()->String{
+        return String(format: "%@/tv/on_the_air", domainString)
+    }
     
     override init() {
         super.init()

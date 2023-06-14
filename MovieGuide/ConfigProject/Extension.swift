@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-
 class DomainPath{
     static func pathImg(posterString:String)-> String{
         return "https://image.tmdb.org/t/p/w300" + posterString
@@ -116,6 +115,10 @@ extension UIApplication {
 
 //MARK: extension UIColor
 extension UIColor{
+    
+    static let customRed = UIColor.init(hex: "d12d43")
+    static let customSky = UIColor.init(hex: "87CEEB")
+    
     convenience init?(hex: String, alpha: CGFloat = 1.0) {
         var hexString = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
 
@@ -138,3 +141,48 @@ extension UIColor{
     }
 }
 
+//MARK: CltvFlowLayout
+final class UICollectionViewPagingFlowLayout: UICollectionViewFlowLayout {
+    override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
+        guard let collectionView = collectionView else { return proposedContentOffset }
+
+        let offset = isVertical ? collectionView.contentOffset.y : collectionView.contentOffset.x
+        let velocity = isVertical ? velocity.y : velocity.x
+
+        let flickVelocityThreshold: CGFloat = 0.2
+        let currentPage = offset / pageSize
+
+        if abs(velocity) > flickVelocityThreshold {
+            let nextPage = velocity > 0.0 ? ceil(currentPage) : floor(currentPage)
+            let nextPosition = nextPage * pageSize
+            return isVertical ? CGPoint(x: proposedContentOffset.x, y: nextPosition) : CGPoint(x: nextPosition, y: proposedContentOffset.y)
+        } else {
+            let nextPosition = round(currentPage) * pageSize
+            return isVertical ? CGPoint(x: proposedContentOffset.x, y: nextPosition) : CGPoint(x: nextPosition, y: proposedContentOffset.y)
+        }
+    }
+
+    private var isVertical: Bool {
+        return scrollDirection == .vertical
+    }
+
+    private var pageSize: CGFloat {
+        if isVertical {
+            return itemSize.height + minimumInteritemSpacing
+        } else {
+            return itemSize.width + minimumLineSpacing
+        }
+    }
+}
+
+//MARK: UIView
+extension UIView{
+    
+    func addShadow(color: UIColor = UIColor.black, opacity: Float = 0.4, offset: CGSize = CGSize(width: 0, height: 4), radius: CGFloat = 2) {
+        layer.shadowColor = color.cgColor
+        layer.shadowOpacity = opacity
+        layer.shadowOffset = offset
+        layer.shadowRadius = radius
+        layer.masksToBounds = false
+    }
+}

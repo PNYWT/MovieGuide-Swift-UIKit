@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FirstMovieVC: UIViewController {
+class PopularMovieVC: UIViewController {
     
     private var moviePopularData:[PopularMovieModel] = []
     @IBOutlet weak var tbvMovie: UITableView!
@@ -72,7 +72,7 @@ class FirstMovieVC: UIViewController {
     }
 }
 
-extension FirstMovieVC: UITableViewDelegate, UITableViewDataSource{
+extension PopularMovieVC: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return moviePopularData.count
@@ -127,7 +127,7 @@ extension FirstMovieVC: UITableViewDelegate, UITableViewDataSource{
     }
 }
 
-extension FirstMovieVC: MovieBannerDelegate{
+extension PopularMovieVC: MovieBannerDelegate{
     func didselectIndex(movieId: Int) {
         let vc = DetailSelectVC.init()
         vc.type = .movie

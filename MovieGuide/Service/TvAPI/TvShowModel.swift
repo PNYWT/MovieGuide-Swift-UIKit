@@ -70,3 +70,52 @@ struct TvTopRateModel: Decodable{
         case onAir = "first_air_date"
     }
 }
+
+//MARK: TopRate
+struct TvPopularDataModel: Decodable{
+    let tvPopularModel : [TvPopularModel]
+    
+    private enum CodingKeys: String, CodingKey{
+        case tvPopularModel = "results"
+    }
+}
+
+struct TvPopularModel: Decodable{
+    let id:Int?
+    let poster_path:String?
+
+    
+    private enum CodingKeys: String, CodingKey{
+        case id
+        case poster_path = "poster_path"
+    }
+}
+
+//MARK: OnAir
+struct TvOnAirDataModel: Decodable{
+    let onAirRateModel : [TvOnAirModel]
+    
+    private enum CodingKeys: String, CodingKey{
+        case onAirRateModel = "results"
+    }
+}
+
+struct TvOnAirModel: Decodable{
+    let idTV:Int?
+    let titleName:String?
+    let year:String?
+    let rateing:Double?
+    let posterImageURL:String?
+    let overview:String?
+    let onAir:String?
+    
+    private enum CodingKeys: String, CodingKey{
+        case idTV = "id"
+        case titleName = "original_name"
+        case overview
+        case year = "release_date"
+        case rateing = "vote_average"
+        case posterImageURL = "poster_path"
+        case onAir = "first_air_date"
+    }
+}
