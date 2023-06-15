@@ -11,6 +11,12 @@ class NavController: UINavigationController{
     
     override func viewDidLoad() {
         setAppearance()
+        
+        
+        DispatchQueue.main.async {
+            MobileAds.shared.requestIDFA()
+            MobileAds.shared.startBanner()
+        }
     }
     
     private func setAppearance(){

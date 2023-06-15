@@ -84,7 +84,7 @@ extension TopRateTVSeriesVC:UICollectionViewDelegate, UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIden, for: indexPath) as! TVshowViewCell
         let md:TvTopRateModel = tvTopRate[indexPath.row]
-        cell.setUI(md: md)
+        cell.setUITopRate(md: md)
         return cell
     }
     

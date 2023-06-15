@@ -16,9 +16,22 @@ class TVshowViewCell: UICollectionViewCell {
         // Initialization code
     }
     
-    func setUI(md:TvTopRateModel?){
+    func setUITopRate(md:TvTopRateModel?){
         if let md_Tmp = md{
             guard let posterString = md_Tmp.posterImageURL else {return}
+            let urlString = DomainPath.pathImg(posterString: posterString)
+            
+            guard let posterImageURL = URL(string: urlString) else {
+                self.imgPoster.image = UIImage.init(systemName: "")
+                return
+            }
+            self.imgPoster.getImageDataFrom(url: posterImageURL)
+        }
+    }
+    
+    func setUIPopular(md:TvPopularModel?){
+        if let md_Tmp = md{
+            guard let posterString = md_Tmp.poster_path else {return}
             let urlString = DomainPath.pathImg(posterString: posterString)
             
             guard let posterImageURL = URL(string: urlString) else {

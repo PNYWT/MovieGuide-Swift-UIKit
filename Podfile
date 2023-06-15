@@ -7,6 +7,7 @@ target 'MovieGuide' do
 
   # Pods for MovieGuide
 pod 'Gemini'
+pod 'Google-Mobile-Ads-SDK'
 end
 
 post_install do |installer|

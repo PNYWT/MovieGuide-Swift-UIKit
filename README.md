@@ -40,3 +40,12 @@ Service -> https://developers.themoviedb.org/3/getting-started/introduction
 2. เพิ่มหน้า On air ใน Tab2 segment 3
 3. เพิ่ม Tab 3 โชว์ icon app + version app + Copy right ----> (พวกแชร์, ให้คะแนนแอพ ไม่ต้องเพิ่ม ไม่ได้อัพ Store)
 4. น่าจะต้องเก็บ catch ภาพ โดยให้สั่งเก็บแต่ละวัน ขึ้นวันใหม่ให้ลบ catch เก่าทิ้ง แล้วเก็บอันใหม่ น่าจะช่วยเรื่องโหลดภาพช้าเวลาเข้าแอพภายในวันหลายๆ ครั้ง
+
+15/06/2023
+- เพิ่ม Admob Banner
+- เพิ่ม on air Tv series
+สิ่งที่จะทำเพิ่มต่อไป
+1. เพิ่ม Tab 3 โชว์ icon app + version app + Copy right ----> (พวกแชร์, ให้คะแนนแอพ ไม่ต้องเพิ่ม ไม่ได้อัพ Store)
+2. น่าจะต้องเก็บ catch ภาพ โดยให้สั่งเก็บแต่ละวัน ขึ้นวันใหม่ให้ลบ catch เก่าทิ้ง แล้วเก็บอันใหม่ น่าจะช่วยเรื่องโหลดภาพช้าเวลาเข้าแอพภายในวันหลายๆ ครั้ง
+3. ระบบ Login Firebase
+4. push Notification (อาจจะทำ)

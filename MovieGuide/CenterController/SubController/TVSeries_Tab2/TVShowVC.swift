@@ -12,6 +12,8 @@ class TVShowVC: UIViewController {
     @IBOutlet weak var segmentControlTV: UISegmentedControl!
     @IBOutlet weak var scrTV: UIScrollView!
     
+    private var vBanner = UIView(frame: .zero)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         scrTV.delegate = self
@@ -20,13 +22,16 @@ class TVShowVC: UIViewController {
         scrTV.contentInsetAdjustmentBehavior = .never
         
         self.segmentSetUp()
+        
+        MobileAds.shared.delegate = self
+        MobileAds.shared.addBannerToVC(VC: self)
     }
     
     func segmentSetUp(){
         DispatchQueue.main.async {
             self.segmentControlTV.setTitle("Popular", forSegmentAt: 0)
             self.segmentControlTV.setTitle("Top Rated", forSegmentAt: 1)
-            self.segmentControlTV.insertSegment(withTitle: "On The Air", at: 2, animated: false)
+            self.segmentControlTV.insertSegment(withTitle: "On Air", at: 2, animated: false)
             
             self.segmentControlTV.selectedSegmentIndex = 0
             self.segmentControlTV.setupSegmentUnderLine()
@@ -90,3 +95,52 @@ extension TVShowVC : UIScrollViewDelegate{
         self.scrTV.setContentOffset(CGPoint(x: x, y: 0), animated: true)
     }
 }
+
+//MARK: Banner
+extension TVShowVC:MobileAdsDelegate{
+    func mobileAdsLoadSuccess(isSucc: Bool, bannerView: UIView?) {
+        switch isSucc{
+        case true:
+            if let viewBannerPassing = bannerView{
+                vBanner = UIView(frame: .zero)
+                self.view.addSubview(vBanner)
+                self.view.bringSubviewToFront(vBanner)
+                vBanner.translatesAutoresizingMaskIntoConstraints = false
+                NSLayoutConstraint.activate([
+                    vBanner.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
+                    vBanner.heightAnchor.constraint(equalToConstant: 50),
+                    vBanner.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)
+                ])
+                self.setupBannerConstraints(bannerView: viewBannerPassing)
+            }else{
+                vBanner.removeFromSuperview()
+            }
+            break
+        case false:
+            vBanner.removeFromSuperview()
+            break
+        }
+    }
+    
+    func setupBannerConstraints( bannerView: UIView) {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        vBanner.addSubview(bannerView)
+        vBanner.addConstraints(
+          [NSLayoutConstraint(item: bannerView,
+                              attribute: .bottom,
+                              relatedBy: .equal,
+                              toItem: vBanner,
+                              attribute: .bottom,
+                              multiplier: 1,
+                              constant: 0),
+           NSLayoutConstraint(item: bannerView,
+                              attribute: .centerX,
+                              relatedBy: .equal,
+                              toItem: vBanner,
+                              attribute: .centerX,
+                              multiplier: 1,
+                              constant: 0)
+          ])
+       }
+}
+

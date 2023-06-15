@@ -12,6 +12,8 @@ class MainMovieVC: UIViewController {
     @IBOutlet weak var scrMovie: UIScrollView!
     @IBOutlet weak var segmentControlMovie: UISegmentedControl!
     
+    private var vBanner = UIView(frame: .zero)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         scrMovie.delegate = self
@@ -19,6 +21,9 @@ class MainMovieVC: UIViewController {
         scrMovie.showsHorizontalScrollIndicator = false
         scrMovie.contentInsetAdjustmentBehavior = .never
         setupScrollView()
+        
+        MobileAds.shared.delegate = self
+        MobileAds.shared.addBannerToVC(VC: self)
     }
     
     func segmentSetUp(){
@@ -77,4 +82,52 @@ extension MainMovieVC : UIScrollViewDelegate{
         let x = scrMovie.frame.size.width * CGFloat(idx)
         self.scrMovie.setContentOffset(CGPoint(x: x, y: 0), animated: true)
     }
+}
+
+//MARK: Banner
+extension MainMovieVC:MobileAdsDelegate{
+    func mobileAdsLoadSuccess(isSucc: Bool, bannerView: UIView?) {
+        switch isSucc{
+        case true:
+            if let viewBannerPassing = bannerView{
+                vBanner = UIView(frame: .zero)
+                self.view.addSubview(vBanner)
+                self.view.bringSubviewToFront(vBanner)
+                vBanner.translatesAutoresizingMaskIntoConstraints = false
+                NSLayoutConstraint.activate([
+                    vBanner.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
+                    vBanner.heightAnchor.constraint(equalToConstant: 50),
+                    vBanner.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)
+                ])
+                self.setupBannerConstraints(bannerView: viewBannerPassing)
+            }else{
+                vBanner.removeFromSuperview()
+            }
+            break
+        case false:
+            vBanner.removeFromSuperview()
+            break
+        }
+    }
+    
+    func setupBannerConstraints( bannerView: UIView) {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        vBanner.addSubview(bannerView)
+        vBanner.addConstraints(
+          [NSLayoutConstraint(item: bannerView,
+                              attribute: .bottom,
+                              relatedBy: .equal,
+                              toItem: vBanner,
+                              attribute: .bottom,
+                              multiplier: 1,
+                              constant: 0),
+           NSLayoutConstraint(item: bannerView,
+                              attribute: .centerX,
+                              relatedBy: .equal,
+                              toItem: vBanner,
+                              attribute: .centerX,
+                              multiplier: 1,
+                              constant: 0)
+          ])
+       }
 }
