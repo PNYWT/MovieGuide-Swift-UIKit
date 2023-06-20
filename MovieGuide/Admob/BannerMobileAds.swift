@@ -12,16 +12,17 @@ import GoogleMobileAds
 
 class UnitIDAds{
     static let banner = "ca-app-pub-3940256099942544/2934735716"
+    static let native = "ca-app-pub-3940256099942544/3986624511"
 }
 
-protocol MobileAdsDelegate{
+protocol BannerMobileAdsDelegate{
     func mobileAdsLoadSuccess(isSucc:Bool, bannerView:UIView?)
 }
 
-class MobileAds:NSObject{
+class BannerMobileAds:NSObject{
     
-    static let shared = MobileAds()
-    var delegate:MobileAdsDelegate?
+    static let shared = BannerMobileAds()
+    var delegate:BannerMobileAdsDelegate?
     var bannerView: GADBannerView!
     
     func addBannerToVC(VC:UIViewController){
@@ -56,7 +57,7 @@ class MobileAds:NSObject{
     }
 }
 
-extension MobileAds:GADBannerViewDelegate{
+extension BannerMobileAds:GADBannerViewDelegate{
     
     func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
       print("bannerViewDidReceiveAd")

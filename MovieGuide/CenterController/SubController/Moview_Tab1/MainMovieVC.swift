@@ -22,8 +22,8 @@ class MainMovieVC: UIViewController {
         scrMovie.contentInsetAdjustmentBehavior = .never
         setupScrollView()
         
-        MobileAds.shared.delegate = self
-        MobileAds.shared.addBannerToVC(VC: self)
+        BannerMobileAds.shared.delegate = self
+        BannerMobileAds.shared.addBannerToVC(VC: self)
     }
     
     func segmentSetUp(){
@@ -85,7 +85,7 @@ extension MainMovieVC : UIScrollViewDelegate{
 }
 
 //MARK: Banner
-extension MainMovieVC:MobileAdsDelegate{
+extension MainMovieVC:BannerMobileAdsDelegate{
     func mobileAdsLoadSuccess(isSucc: Bool, bannerView: UIView?) {
         switch isSucc{
         case true:

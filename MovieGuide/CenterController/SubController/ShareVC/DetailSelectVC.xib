@@ -20,6 +20,7 @@
                 <outlet property="lbRuntimeMovie" destination="5so-qA-iLO" id="Jk3-m7-Bur"/>
                 <outlet property="lbTagline" destination="dDn-EP-ewy" id="aG5-Vy-VRP"/>
                 <outlet property="lbTitleMovie" destination="0eC-d1-5hM" id="UCl-Es-jee"/>
+                <outlet property="vAddNative" destination="H8c-LE-HtT" id="g7I-tn-R9H"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -96,6 +97,13 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H8c-LE-HtT">
+                    <rect key="frame" x="0.0" y="668" width="393" height="150"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="Q06-cM-nQh"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -108,10 +116,13 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="mm0-Vf-pas" secondAttribute="trailing" constant="5" id="6kb-yI-W53"/>
                 <constraint firstItem="gNc-0g-BkP" firstAttribute="top" secondItem="EEC-dI-Cm3" secondAttribute="bottom" constant="5" id="DSY-sB-mJr"/>
                 <constraint firstItem="dDn-EP-ewy" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="5" id="Dbz-lb-JwY"/>
+                <constraint firstItem="H8c-LE-HtT" firstAttribute="top" relation="greaterThanOrEqual" secondItem="mm0-Vf-pas" secondAttribute="bottom" constant="8" id="Hl3-Gv-BWS"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="FTc-VX-kJJ" secondAttribute="trailing" constant="5" id="MVo-VU-Ezl"/>
                 <constraint firstItem="mm0-Vf-pas" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="5" id="NQR-z5-ImV"/>
                 <constraint firstItem="0eC-d1-5hM" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="5" id="PJW-Bh-Z0x"/>
                 <constraint firstItem="EEC-dI-Cm3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="5" id="RO2-Iy-Y7C"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="H8c-LE-HtT" secondAttribute="trailing" id="Tin-tZ-1MG"/>
+                <constraint firstItem="H8c-LE-HtT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="WWI-Qf-xJD"/>
                 <constraint firstItem="mm0-Vf-pas" firstAttribute="top" secondItem="dDn-EP-ewy" secondAttribute="bottom" constant="5" id="XhM-NL-zRq"/>
                 <constraint firstItem="EEC-dI-Cm3" firstAttribute="top" secondItem="FTc-VX-kJJ" secondAttribute="bottom" constant="5" id="bJW-5z-3Eo"/>
                 <constraint firstItem="FTc-VX-kJJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="5" id="c77-2I-aEm"/>
@@ -121,6 +132,7 @@
                 <constraint firstItem="FTc-VX-kJJ" firstAttribute="top" secondItem="0eC-d1-5hM" secondAttribute="bottom" constant="5" id="jdD-69-op5"/>
                 <constraint firstItem="JJ2-bv-gZh" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="mKl-aO-3TW"/>
                 <constraint firstItem="dDn-EP-ewy" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" constant="5" id="mfd-U2-qcH"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="H8c-LE-HtT" secondAttribute="bottom" id="qK6-Tn-QKF"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0eC-d1-5hM" secondAttribute="trailing" constant="5" id="uGc-kO-iS2"/>
             </constraints>
             <point key="canvasLocation" x="61.832061068702288" y="19.718309859154932"/>

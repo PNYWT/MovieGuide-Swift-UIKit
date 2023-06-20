@@ -23,8 +23,8 @@ class TVShowVC: UIViewController {
         
         self.segmentSetUp()
         
-        MobileAds.shared.delegate = self
-        MobileAds.shared.addBannerToVC(VC: self)
+        BannerMobileAds.shared.delegate = self
+        BannerMobileAds.shared.addBannerToVC(VC: self)
     }
     
     func segmentSetUp(){
@@ -97,7 +97,7 @@ extension TVShowVC : UIScrollViewDelegate{
 }
 
 //MARK: Banner
-extension TVShowVC:MobileAdsDelegate{
+extension TVShowVC:BannerMobileAdsDelegate{
     func mobileAdsLoadSuccess(isSucc: Bool, bannerView: UIView?) {
         switch isSucc{
         case true:

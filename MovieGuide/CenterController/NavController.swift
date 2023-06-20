@@ -14,8 +14,8 @@ class NavController: UINavigationController{
         
         UserDefaults.standard.setValue("©Copyright CallmeOni, 2023", forKey: KeysUSDF.CreateBy)
         DispatchQueue.main.async {
-            MobileAds.shared.requestIDFA()
-            MobileAds.shared.startBanner()
+            BannerMobileAds.shared.requestIDFA()
+            BannerMobileAds.shared.startBanner()
         }
     }
     

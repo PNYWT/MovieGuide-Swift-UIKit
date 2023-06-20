@@ -30,12 +30,18 @@ class DetailSelectVC: UIViewController {
     @IBOutlet weak var lbOverview: UILabel!
     @IBOutlet weak var imdbBtn: UIButton!
     
+    @IBOutlet weak var vAddNative: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchData()
         self.view.backgroundColor = .customSky
         cltvGenres.backgroundColor = .clear
         // Do any additional setup after loading the view.
+        
+        vAddNative.backgroundColor = .red
+        NativeMobileAds.shared.nativeAddsubview(viewMain: vAddNative)
+        NativeMobileAds.shared.loadNative(VC: self)
     }
     
     private func fetchData(){
