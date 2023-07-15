@@ -44,6 +44,25 @@ extension AppDelegate{
         return appDelegate ?? UIApplication.shared.delegate as! AppDelegate
     }
     
+    
+    static func shareViewController(base: UIViewController? = UIApplication.shared.connectedScenes
+                                            .compactMap { $0 as? UIWindowScene }
+                                            .flatMap { $0.windows }
+                                            .filter { $0.isKeyWindow }
+                                            .first?
+                                            .rootViewController) -> UIViewController? {
+
+        if let nav = base as? UINavigationController {
+            return shareViewController(base: nav.visibleViewController)
+        } else if let tab = base as? UITabBarController, let selected = tab.selectedViewController {
+            return shareViewController(base: selected)
+        } else if let presented = base?.presentedViewController {
+            return shareViewController(base: presented)
+        }
+
+        return base
+    }
+    
     func goMain(){
         guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else {
             return

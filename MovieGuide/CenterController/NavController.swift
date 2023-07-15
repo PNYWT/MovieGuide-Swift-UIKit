@@ -24,7 +24,7 @@ class NavController: UINavigationController{
         //bg Color Nav
         UINavigationBar.appearance().barTintColor = UIColor.white
         //text color
-        UINavigationBar.appearance().tintColor = UIColor.systemBlue
+        UINavigationBar.appearance().tintColor = UIColor.customRed //UIColor.systemBlue
         
         //title page font
         let font = UIFont.systemFont(ofSize: 18, weight: .bold)
@@ -76,6 +76,12 @@ extension NavController: UINavigationControllerDelegate{
             tabBarController?.tabBar.isHidden = false
             if viewController.isKind(of: MainMovieVC.classForCoder()){
                 viewController.title = "Movie"
+                
+                
+                let img = UIImage(systemName: "person.crop.circle")!.withRenderingMode(.alwaysOriginal)
+                let loginBtn = UIBarButtonItem(image: img, style: .plain, target: self, action: #selector(gotoLoginVC))
+                viewController.navigationItem.rightBarButtonItems = [loginBtn]
+                
             }else if viewController.isKind(of: TVShowVC.classForCoder()){
                 viewController.title = "TV Show"
             }else if viewController.isKind(of: DetailSelectVC.classForCoder()){
@@ -86,5 +92,10 @@ extension NavController: UINavigationControllerDelegate{
         default:
             tabBarController?.tabBar.isHidden = true
         }
+    }
+    
+    @objc func gotoLoginVC(){
+        let vc = LoginVC()
+        AppDelegate.shareViewController()?.navigationController?.pushViewController(vc, animated: true)
     }
 }
