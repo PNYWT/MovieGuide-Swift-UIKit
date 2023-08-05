@@ -9,6 +9,7 @@ target 'MovieGuide' do
 pod 'Gemini'
 pod 'Google-Mobile-Ads-SDK'
 pod 'FirebaseMessaging'
+pod 'FirebaseAuth'
 end
 
 post_install do |installer|

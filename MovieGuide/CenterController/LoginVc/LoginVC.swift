@@ -10,20 +10,29 @@ import AuthenticationServices
 
 class LoginVC: UIViewController {
     
-    private let signInBtn = ASAuthorizationAppleIDButton()
+    private let signInBtnApple = ASAuthorizationAppleIDButton()
+    private var signInBtnEmail:UIButton!
     private let lbTermsAndConditions = UILabel.init()
     private let lbNotNow = UILabel.init()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setBtnSignInApple()
-        setNotNow()
-        setTermsandConditions()
+        setBtnSignInWithEmail()
+//        setNotNow()
+//        setTermsandConditions()
+    }
+    
+    private func setBtnSignInWithEmail(){
+        signInBtnEmail = UIButton(type: .custom)
+        view.addSubview(signInBtnEmail)
+        signInBtnEmail.backgroundColor = .white
+        signInBtnEmail.addTarget(self, action: #selector(didSignInEmail), for: .touchUpInside)
     }
     
     private func setBtnSignInApple(){
-        view.addSubview(signInBtn)
-        signInBtn.addTarget(self, action: #selector(didSignIn), for: .touchUpInside)
+        view.addSubview(signInBtnApple)
+        signInBtnApple.addTarget(self, action: #selector(didSignInApple), for: .touchUpInside)
     }
     
     private func setTermsandConditions(){
@@ -59,12 +68,22 @@ class LoginVC: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        signInBtn.frame = CGRect(x: 0, y: 0, width: 140, height: 50)
-        signInBtn.center = view.center
+//    x: (ความกว้างจอ - ความกว้างของ View ที่ต้องการให้อยู่ตรงกลาง)/2
+        signInBtnApple.frame = CGRect(x: (self.view.frame.width - 140)/2, y: self.view.frame.height/2, width: 140, height: 50)
+        signInBtnApple.layer.cornerRadius = signInBtnApple.frame.height/2
+        signInBtnApple.layer.masksToBounds = true
         
-        lbNotNow.frame = CGRect(x: 0, y: signInBtn.frame.origin.y + signInBtn.frame.height + spaceDefualt*2, width: self.view.frame.width, height: calTextHeight(label: lbNotNow))
+        signInBtnEmail.frame = CGRect(x: (self.view.frame.width - 140)/2, y: signInBtnApple.frame.origin.y + signInBtnApple.frame.height + spaceDefualt*2 , width: 140, height: 50)
+        signInBtnEmail.layer.cornerRadius = signInBtnEmail.frame.height/2
+        signInBtnEmail.layer.masksToBounds = true
+        signInBtnEmail.setTitle("Email", for: .normal)
+        signInBtnEmail.setTitleColor(.black, for: .normal)
+        signInBtnEmail.titleLabel?.textAlignment = .center
         
-        lbTermsAndConditions.frame = CGRect(x: 0, y: lbNotNow.frame.origin.y + lbNotNow.frame.height + spaceDefualt*2, width: self.view.frame.width, height: calTextHeight(label: lbTermsAndConditions))
+        
+//        lbNotNow.frame = CGRect(x: 0, y: signInBtnApple.frame.origin.y + signInBtnApple.frame.height + spaceDefualt*2, width: self.view.frame.width, height: calTextHeight(label: lbNotNow))
+//
+//        lbTermsAndConditions.frame = CGRect(x: 0, y: lbNotNow.frame.origin.y + lbNotNow.frame.height + spaceDefualt*2, width: self.view.frame.width, height: calTextHeight(label: lbTermsAndConditions))
     }
     
     func calTextHeight(label:UILabel)->CGFloat{
@@ -75,7 +94,12 @@ class LoginVC: UIViewController {
         return height
     }
     
-    @objc func didSignIn(){
+    @objc func didSignInEmail(){
+//        let vc = LoginWithOtherVC()
+        self.navigationController?.pushViewController(LoginWithOtherVC(), animated: true)
+    }
+    
+    @objc func didSignInApple(){
         let request = ASAuthorizationAppleIDProvider().createRequest()
         request.requestedScopes = [.fullName, .email]
         let controller = ASAuthorizationController(authorizationRequests: [request])

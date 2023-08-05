@@ -165,3 +165,71 @@ extension UIView{
         layer.masksToBounds = false
     }
 }
+
+//MARK: UIWindow
+extension UIWindow {
+    func visibleViewController() -> UIViewController? {
+        if let rootViewController = self.rootViewController {
+            return UIWindow.getVisibleViewController(from: rootViewController)
+        }
+        return nil
+    }
+
+    private static func getVisibleViewController(from vc: UIViewController) -> UIViewController {
+        if let navigationController = vc as? UINavigationController {
+            return UIWindow.getVisibleViewController(from: navigationController.visibleViewController!)
+        } else if let tabBarController = vc as? UITabBarController {
+            return UIWindow.getVisibleViewController(from: tabBarController.selectedViewController!)
+        } else {
+            if let presentedViewController = vc.presentedViewController {
+                return UIWindow.getVisibleViewController(from: presentedViewController)
+            } else {
+                return vc
+            }
+        }
+    }
+    
+    //MARK: topViewController
+    func topViewController() -> UIViewController? {
+        var top = self.rootViewController
+        while let presented = top?.presentedViewController {
+            top = presented
+        }
+        return top
+    }
+}
+
+//MARK: UITextField
+extension UITextField {
+    func addMove() {
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: nil) { notification in
+            if !self.isFirstResponder {
+                return
+            }
+            
+            guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+              return
+            }
+            
+            
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene, let win = windowScene.windows.first {
+                var shouldMoveViewUp = false
+                let bottomOfTextField = self.convert(self.bounds, to: win.visibleViewController()?.view).maxY;
+                  
+                let topOfKeyboard = (win.visibleViewController()?.view.frame.height)! - keyboardSize.height
+                if bottomOfTextField > topOfKeyboard {
+                    shouldMoveViewUp = true
+                }
+                if(shouldMoveViewUp) {
+                    win.frame.origin.y = 0 - keyboardSize.height
+                }
+            }
+        }
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: nil) { notification in
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene, let win = windowScene.windows.first {
+//                UIApplication.shared.windows.first?.frame.origin.y = 0
+                win.frame.origin.y = 0
+            }
+        }
+    }
+}
