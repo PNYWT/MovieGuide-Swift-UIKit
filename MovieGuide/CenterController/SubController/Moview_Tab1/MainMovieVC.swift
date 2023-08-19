@@ -9,10 +9,13 @@ import UIKit
 import CoreLocation
 
 class MainMovieVC: UIViewController {
+    
     @IBOutlet weak var scrMovie: UIScrollView!
     @IBOutlet weak var segmentControlMovie: UISegmentedControl!
     
     private var vBanner = UIView(frame: .zero)
+    
+    private var welcomeView:WelcomeView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +27,16 @@ class MainMovieVC: UIViewController {
         
         BannerMobileAds.shared.delegate = self
         BannerMobileAds.shared.addBannerToVC(VC: self)
+        
+//        setupWelcomeView()
+    }
+    
+    private func setupWelcomeView(){
+        self.welcomeView = WelcomeView(frame: CGRect(x: 0, y: 0, width: 300, height: 200))
+        self.welcomeView.center = self.view.center
+        self.view.addSubview(welcomeView)
+        self.welcomeView.layer.cornerRadius = 32/2
+        self.welcomeView.layer.masksToBounds = true
     }
     
     func segmentSetUp(){
@@ -35,7 +48,7 @@ class MainMovieVC: UIViewController {
             self.selectSegment(self.segmentControlMovie)
         }
     }
-
+    
     func setupScrollView() {
         DispatchQueue.main.async {
             for page in 0..<2 {
@@ -114,20 +127,20 @@ extension MainMovieVC:BannerMobileAdsDelegate{
         bannerView.translatesAutoresizingMaskIntoConstraints = false
         vBanner.addSubview(bannerView)
         vBanner.addConstraints(
-          [NSLayoutConstraint(item: bannerView,
-                              attribute: .bottom,
-                              relatedBy: .equal,
-                              toItem: vBanner,
-                              attribute: .bottom,
-                              multiplier: 1,
-                              constant: 0),
-           NSLayoutConstraint(item: bannerView,
-                              attribute: .centerX,
-                              relatedBy: .equal,
-                              toItem: vBanner,
-                              attribute: .centerX,
-                              multiplier: 1,
-                              constant: 0)
-          ])
-       }
+            [NSLayoutConstraint(item: bannerView,
+                                attribute: .bottom,
+                                relatedBy: .equal,
+                                toItem: vBanner,
+                                attribute: .bottom,
+                                multiplier: 1,
+                                constant: 0),
+             NSLayoutConstraint(item: bannerView,
+                                attribute: .centerX,
+                                relatedBy: .equal,
+                                toItem: vBanner,
+                                attribute: .centerX,
+                                multiplier: 1,
+                                constant: 0)
+            ])
+    }
 }

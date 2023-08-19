@@ -15,7 +15,6 @@
 		806AFD172A7E2319000DC4FC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 806AFD162A7E2319000DC4FC /* GoogleService-Info.plist */; };
 		806AFD1A2A7E26F3000DC4FC /* LoginWithOtherVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806AFD182A7E26F3000DC4FC /* LoginWithOtherVC.swift */; };
 		806AFD1B2A7E26F3000DC4FC /* LoginWithOtherVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 806AFD192A7E26F3000DC4FC /* LoginWithOtherVC.xib */; };
-		806B973F2A41F5A4006CED5B /* NativeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 806B973E2A41F5A4006CED5B /* NativeView.xib */; };
 		806B97412A41F5F3006CED5B /* NativeMobileAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806B97402A41F5F3006CED5B /* NativeMobileAds.swift */; };
 		807F7D482A39FFD200AACDA2 /* TopRateTVSeriesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807F7D462A39FFD200AACDA2 /* TopRateTVSeriesVC.swift */; };
 		807F7D492A39FFD200AACDA2 /* TopRateTVSeriesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 807F7D472A39FFD200AACDA2 /* TopRateTVSeriesVC.xib */; };
@@ -23,6 +22,10 @@
 		807F7D4F2A3A024300AACDA2 /* PopularTVSeriesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 807F7D4D2A3A024300AACDA2 /* PopularTVSeriesVC.xib */; };
 		807F7D522A3A0A3800AACDA2 /* PupularViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807F7D502A3A0A3700AACDA2 /* PupularViewCell.swift */; };
 		807F7D532A3A0A3800AACDA2 /* PupularViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 807F7D512A3A0A3700AACDA2 /* PupularViewCell.xib */; };
+		8084EDDB2A90802F0052B5E5 /* NativeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8084EDDA2A90802F0052B5E5 /* NativeView.xib */; };
+		8084EDDF2A9083B60052B5E5 /* NativeViewTest.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8084EDDE2A9083B60052B5E5 /* NativeViewTest.xib */; };
+		8084EDE42A909A310052B5E5 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084EDE32A909A310052B5E5 /* WelcomeView.swift */; };
+		8084EDE62A909AA50052B5E5 /* WelcomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8084EDE52A909AA50052B5E5 /* WelcomeView.xib */; };
 		809C00C52A3735B000339B09 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809C00C42A3735B000339B09 /* Global.swift */; };
 		80AC4F4F2A3A198200C6E3D0 /* OnAirTVSeriesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AC4F4D2A3A198200C6E3D0 /* OnAirTVSeriesVC.swift */; };
 		80AC4F502A3A198200C6E3D0 /* OnAirTVSeriesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80AC4F4E2A3A198200C6E3D0 /* OnAirTVSeriesVC.xib */; };
@@ -75,7 +78,6 @@
 		806AFD162A7E2319000DC4FC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		806AFD182A7E26F3000DC4FC /* LoginWithOtherVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithOtherVC.swift; sourceTree = "<group>"; };
 		806AFD192A7E26F3000DC4FC /* LoginWithOtherVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginWithOtherVC.xib; sourceTree = "<group>"; };
-		806B973E2A41F5A4006CED5B /* NativeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NativeView.xib; path = ../../../../../Downloads/Admob/Admob/NativeView.xib; sourceTree = "<group>"; };
 		806B97402A41F5F3006CED5B /* NativeMobileAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeMobileAds.swift; sourceTree = "<group>"; };
 		807F7D462A39FFD200AACDA2 /* TopRateTVSeriesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRateTVSeriesVC.swift; sourceTree = "<group>"; };
 		807F7D472A39FFD200AACDA2 /* TopRateTVSeriesVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopRateTVSeriesVC.xib; sourceTree = "<group>"; };
@@ -83,6 +85,10 @@
 		807F7D4D2A3A024300AACDA2 /* PopularTVSeriesVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopularTVSeriesVC.xib; sourceTree = "<group>"; };
 		807F7D502A3A0A3700AACDA2 /* PupularViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PupularViewCell.swift; sourceTree = "<group>"; };
 		807F7D512A3A0A3700AACDA2 /* PupularViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PupularViewCell.xib; sourceTree = "<group>"; };
+		8084EDDA2A90802F0052B5E5 /* NativeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NativeView.xib; sourceTree = "<group>"; };
+		8084EDDE2A9083B60052B5E5 /* NativeViewTest.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NativeViewTest.xib; sourceTree = "<group>"; };
+		8084EDE32A909A310052B5E5 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		8084EDE52A909AA50052B5E5 /* WelcomeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeView.xib; sourceTree = "<group>"; };
 		809C00C42A3735B000339B09 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		80AC4F4D2A3A198200C6E3D0 /* OnAirTVSeriesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnAirTVSeriesVC.swift; sourceTree = "<group>"; };
 		80AC4F4E2A3A198200C6E3D0 /* OnAirTVSeriesVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnAirTVSeriesVC.xib; sourceTree = "<group>"; };
@@ -235,6 +241,15 @@
 			path = PopularTVSeriesPage;
 			sourceTree = "<group>";
 		};
+		8084EDE22A9099F50052B5E5 /* SubViewMainMovie */ = {
+			isa = PBXGroup;
+			children = (
+				8084EDE32A909A310052B5E5 /* WelcomeView.swift */,
+				8084EDE52A909AA50052B5E5 /* WelcomeView.xib */,
+			);
+			path = SubViewMainMovie;
+			sourceTree = "<group>";
+		};
 		809C00C32A37335F00339B09 /* SubController */ = {
 			isa = PBXGroup;
 			children = (
@@ -257,8 +272,9 @@
 		80F3F3682A3B662200F7F373 /* Admob */ = {
 			isa = PBXGroup;
 			children = (
-				806B973E2A41F5A4006CED5B /* NativeView.xib */,
 				80F3F3692A3B664E00F7F373 /* BannerMobileAds.swift */,
+				8084EDDE2A9083B60052B5E5 /* NativeViewTest.xib */,
+				8084EDDA2A90802F0052B5E5 /* NativeView.xib */,
 				806B97402A41F5F3006CED5B /* NativeMobileAds.swift */,
 			);
 			path = Admob;
@@ -313,6 +329,7 @@
 			isa = PBXGroup;
 			children = (
 				D73A89CD29CDFA0400D6A31C /* MainMovieVC.swift */,
+				8084EDE22A9099F50052B5E5 /* SubViewMainMovie */,
 				8065585D2A38BBA5009377AE /* PopularMoviePage */,
 				806558672A38BC23009377AE /* SecondMoviePage */,
 				806558622A38BBE4009377AE /* GlobalMovie */,
@@ -468,6 +485,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8084EDDB2A90802F0052B5E5 /* NativeView.xib in Resources */,
 				D73A89F529CF46A900D6A31C /* GenresViewCell.xib in Resources */,
 				806558662A38BC19009377AE /* TopRateMovieVC.xib in Resources */,
 				D78A346B29E1383A0069242B /* LoginVC.xib in Resources */,
@@ -480,12 +498,13 @@
 				D73A89D629CDFA0500D6A31C /* LaunchScreen.storyboard in Resources */,
 				D73A89D329CDFA0500D6A31C /* Assets.xcassets in Resources */,
 				806AFD1B2A7E26F3000DC4FC /* LoginWithOtherVC.xib in Resources */,
+				8084EDDF2A9083B60052B5E5 /* NativeViewTest.xib in Resources */,
 				807F7D532A3A0A3800AACDA2 /* PupularViewCell.xib in Resources */,
 				D73A89D129CDFA0400D6A31C /* Main.storyboard in Resources */,
+				8084EDE62A909AA50052B5E5 /* WelcomeView.xib in Resources */,
 				D73A8A0329D0123B00D6A31C /* MovieBanner.xib in Resources */,
 				D7B4B48829D2D11400DC74D4 /* TVshowViewCell.xib in Resources */,
 				D73A8A0729D01BBC00D6A31C /* MoviewBannerViewCell.xib in Resources */,
-				806B973F2A41F5A4006CED5B /* NativeView.xib in Resources */,
 				806AFD172A7E2319000DC4FC /* GoogleService-Info.plist in Resources */,
 				D78A347629E14CF00069242B /* PolicyVc.xib in Resources */,
 				D73A89E529CEA40400D6A31C /* PopularMovieViewCell.xib in Resources */,
@@ -561,6 +580,7 @@
 				806AFD1A2A7E26F3000DC4FC /* LoginWithOtherVC.swift in Sources */,
 				D73A8A1229D2C95900D6A31C /* TvShowModel.swift in Sources */,
 				806B97412A41F5F3006CED5B /* NativeMobileAds.swift in Sources */,
+				8084EDE42A909A310052B5E5 /* WelcomeView.swift in Sources */,
 				D73A8A0B29D28EEF00D6A31C /* LocationManager.swift in Sources */,
 				D73A8A0E29D2C7D800D6A31C /* ConfigApp.swift in Sources */,
 				807F7D522A3A0A3800AACDA2 /* PupularViewCell.swift in Sources */,
