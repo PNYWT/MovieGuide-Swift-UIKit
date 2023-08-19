@@ -97,6 +97,7 @@ extension UIColor{
     
     static let customRed = UIColor.init(hex: "d12d43")
     static let customSky = UIColor.init(hex: "87CEEB")
+    static let custom100Blue = UIColor.init(hex: "d0d9ff")
     
     convenience init?(hex: String, alpha: CGFloat = 1.0) {
         var hexString = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
@@ -232,4 +233,10 @@ extension UITextField {
             }
         }
     }
+}
+
+//MARK: Font
+extension UIFont{
+    static let font18 = UIFont.systemFont(ofSize: 18)
+    static let font18Bold = UIFont.boldSystemFont(ofSize: 18)
 }

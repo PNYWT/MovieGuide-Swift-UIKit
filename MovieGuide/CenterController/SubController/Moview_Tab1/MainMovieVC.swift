@@ -25,18 +25,23 @@ class MainMovieVC: UIViewController {
         scrMovie.contentInsetAdjustmentBehavior = .never
         setupScrollView()
         
-        BannerMobileAds.shared.delegate = self
         BannerMobileAds.shared.addBannerToVC(VC: self)
-        
-//        setupWelcomeView()
+        BannerMobileAds.shared.delegate = self
+        setupWelcomeView()
     }
     
     private func setupWelcomeView(){
         self.welcomeView = WelcomeView(frame: CGRect(x: 0, y: 0, width: 300, height: 200))
+        self.welcomeView.delegate = self
         self.welcomeView.center = self.view.center
         self.view.addSubview(welcomeView)
         self.welcomeView.layer.cornerRadius = 32/2
         self.welcomeView.layer.masksToBounds = true
+        self.welcomeView.alpha = 0
+        
+        UIView.animate(withDuration: 1.0, animations: {
+            self.welcomeView.alpha = 1.0
+        })
     }
     
     func segmentSetUp(){
@@ -142,5 +147,14 @@ extension MainMovieVC:BannerMobileAdsDelegate{
                                 multiplier: 1,
                                 constant: 0)
             ])
+    }
+}
+
+
+extension MainMovieVC: WelcomeViewDelegate{
+    func okWelcome(success: Bool) {
+        if self.view.contains(welcomeView){
+            self.welcomeView.removeFromSuperview()
+        }
     }
 }

@@ -7,10 +7,18 @@
 
 import UIKit
 
+protocol WelcomeViewDelegate{
+    func okWelcome(success:Bool)
+}
+
 class WelcomeView: UIView {
+    
+    var delegate:WelcomeViewDelegate?
 
     @IBOutlet weak var parentView:UIView!
-
+    @IBOutlet weak var lbWelcome: UILabel!
+    @IBOutlet weak var okBth: UIButton!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.commitInit()
@@ -25,6 +33,23 @@ class WelcomeView: UIView {
         Bundle.main.loadNibNamed("WelcomeView", owner: self)
         addSubview(parentView)
         parentView.frame = self.bounds
-        parentView.backgroundColor = .red
+        parentView.backgroundColor = .custom100Blue
+        
+        lbWelcome.font = .font18Bold
+        lbWelcome.textAlignment = .center
+        lbWelcome.textColor = .customRed
+        lbWelcome.numberOfLines = 0
+        lbWelcome.text = "Welcome back enjoy with your movie."
+        
+        okBth.setTitle("OK", for: .normal)
+        okBth.setTitleColor(.white, for: .normal)
+        okBth.backgroundColor = .customRed
+        okBth.addTarget(self, action: #selector(selectOK), for: .touchUpInside)
+        okBth.layer.cornerRadius = self.okBth.frame.height/2
+        okBth.layer.masksToBounds = true
+    }
+    
+    @objc private func selectOK(){
+        self.delegate?.okWelcome(success: true)
     }
 }
