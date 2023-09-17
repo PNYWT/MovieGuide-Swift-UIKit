@@ -19,7 +19,7 @@ class LoginVC: UIViewController {
         super.viewDidLoad()
         setBtnSignInApple()
         setBtnSignInWithEmail()
-//        setNotNow()
+        setNotNow()
 //        setTermsandConditions()
     }
     
@@ -81,7 +81,7 @@ class LoginVC: UIViewController {
         signInBtnEmail.titleLabel?.textAlignment = .center
         
         
-//        lbNotNow.frame = CGRect(x: 0, y: signInBtnApple.frame.origin.y + signInBtnApple.frame.height + spaceDefualt*2, width: self.view.frame.width, height: calTextHeight(label: lbNotNow))
+        lbNotNow.frame = CGRect(x: 0, y: signInBtnEmail.frame.origin.y + signInBtnEmail.frame.height + spaceDefualt*2, width: self.view.frame.width, height: calTextHeight(label: lbNotNow))
 //
 //        lbTermsAndConditions.frame = CGRect(x: 0, y: lbNotNow.frame.origin.y + lbNotNow.frame.height + spaceDefualt*2, width: self.view.frame.width, height: calTextHeight(label: lbTermsAndConditions))
     }

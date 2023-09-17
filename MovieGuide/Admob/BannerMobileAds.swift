@@ -32,6 +32,7 @@ class BannerMobileAds:NSObject{
     }
     
     func startBanner(){
+        bannerView = GADBannerView()
         bannerView.adUnitID = UnitIDAds.banner
         bannerView.delegate = self
         bannerView.load(GADRequest())
