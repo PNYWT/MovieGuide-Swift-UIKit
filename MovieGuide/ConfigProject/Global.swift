@@ -10,6 +10,7 @@ import Foundation
 class KeysUSDF{
     static let CreateBy = "createByCallmeOni"
     static let saveLogin = "saveLogin"
+    static let checkShowWelcome = "ShowWelcome"
 }
 
 

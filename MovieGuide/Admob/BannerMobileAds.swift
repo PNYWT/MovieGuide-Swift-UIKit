@@ -16,7 +16,8 @@ class UnitIDAds{
 }
 
 protocol BannerMobileAdsDelegate{
-    func mobileAdsLoadSuccess(isSucc:Bool, bannerView:UIView?)
+    func addBanner(banner:GADBannerView)
+    func failLoadBanner()
 }
 
 class BannerMobileAds:NSObject{
@@ -25,16 +26,12 @@ class BannerMobileAds:NSObject{
     var delegate:BannerMobileAdsDelegate?
     var bannerView: GADBannerView!
     
-    func addBannerToVC(VC:UIViewController){
-        bannerView = GADBannerView(adSize: GADAdSizeBanner)
-        bannerView.adSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(UIScreen.main.bounds.width)
-        bannerView.rootViewController = VC
-    }
-    
     func startBanner(){
-        bannerView = GADBannerView()
+        bannerView = GADBannerView(adSize: GADAdSizeBanner)
         bannerView.adUnitID = UnitIDAds.banner
+        bannerView.rootViewController = AppDelegate.shareViewController()
         bannerView.delegate = self
+        bannerView.adSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(UIScreen.main.bounds.width)
         bannerView.load(GADRequest())
     }
     
@@ -53,6 +50,7 @@ class BannerMobileAds:NSObject{
                 @unknown default:
                     print("Don't save imei")
                 }
+                self.startBanner()
             })
         }
     }
@@ -62,11 +60,11 @@ extension BannerMobileAds:GADBannerViewDelegate{
     
     func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
       print("bannerViewDidReceiveAd")
-        self.delegate?.mobileAdsLoadSuccess(isSucc: true, bannerView: bannerView)
+        self.delegate?.addBanner(banner: bannerView)
     }
 
     func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
       print("bannerView:didFailToReceiveAdWithError: \(error.localizedDescription)")
-        self.delegate?.mobileAdsLoadSuccess(isSucc: false, bannerView: nil)
+        self.delegate?.failLoadBanner()
     }
 }

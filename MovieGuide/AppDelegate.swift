@@ -32,6 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         application.registerForRemoteNotifications()
         
+        if UserDefaults.standard.string(forKey: KeysUSDF.checkShowWelcome) != DateTime.getCurrentDate(){
+            UserDefaults.standard.setValue(DateTime.getCurrentDate(), forKey: KeysUSDF.checkShowWelcome)
+        }
         
         return true
     }

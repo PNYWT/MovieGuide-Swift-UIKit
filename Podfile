@@ -10,6 +10,7 @@ pod 'Gemini'
 pod 'Google-Mobile-Ads-SDK'
 pod 'FirebaseMessaging'
 pod 'FirebaseAuth'
+pod 'Alamofire', '~> 5.8'
 end
 
 post_install do |installer|

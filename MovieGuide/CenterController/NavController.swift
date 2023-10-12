@@ -11,11 +11,9 @@ class NavController: UINavigationController{
     
     override func viewDidLoad() {
         setAppearance()
-        
         UserDefaults.standard.setValue("©Copyright CallmeOni, 2023", forKey: KeysUSDF.CreateBy)
         DispatchQueue.main.async {
             BannerMobileAds.shared.requestIDFA()
-            BannerMobileAds.shared.startBanner()
         }
     }
     
