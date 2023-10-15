@@ -7,9 +7,10 @@
 
 import UIKit
 import FirebaseAuth
+import ProgressHUD
 
 class LoginWithOtherVC: UIViewController {
-
+    
     @IBOutlet weak var tfEmail: UITextField!
     @IBOutlet weak var tfPassword: UITextField!
     
@@ -58,7 +59,8 @@ class LoginWithOtherVC: UIViewController {
     }
     
     @objc private func loginNow(){
-        print("Login Now!")
+        ProgressHUD.show("Wait...")
+        //        print("Login Now!")
         guard let emailLogin = tfEmail.text else{
             showAlertMissingData(msg: "Please input Email", textFieldCall: tfEmail)
             return
@@ -70,23 +72,39 @@ class LoginWithOtherVC: UIViewController {
         }
         
         FirebaseAuth.Auth.auth().signIn(withEmail: emailLogin, password: pwLogin) { dataReuslt, err in
-           
             if let errorReturn = err{
-//                self.showAlertMissingData(msg: errorReturn.localizedDescription, textFieldCall: nil)
-                print("signIn Success")
-                let alert = UIAlertController(title: nil, message: "Create Account", preferredStyle: .alert)
+                ProgressHUD.dismiss()
+                let alert = UIAlertController(title: errorReturn.localizedDescription, message: "Please create Account", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { _ in
                     FirebaseAuth.Auth.auth().createUser(withEmail: emailLogin, password: pwLogin) { dataReuslt, err in
-                        if err == nil{
+                        if let error = err {
+                            ProgressHUD.showError(error.localizedDescription)
+                            ProgressHUD.animate(withDuration: 3, delay: 1) {
+                                ProgressHUD.dismiss()
+                            }
+                        } else {
+                            ProgressHUD.show()
+                            
+                            print("User registered successfully")
                             print("CreateUser Success -> \(dataReuslt)")
+                            //MARK: Save Account
                         }
                     }
                 }))
                 alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
                 self.present(alert, animated: true)
             }else{
-                print("SignIn Fail")
-                return
+                if let dataReturn = dataReuslt{
+                    print("signIn Success")
+                    print("dataReturn -> \(dataReturn.user)")
+                    ProgressHUD.animate(withDuration: 3, delay: 1) {
+                        let saveParameter:[String:Any] = ["uid":dataReturn.user.uid, "displayName":dataReturn.user.displayName, "photoURL":dataReturn.user.photoURL,"email": dataReturn.user.email, "phoneNumber":dataReturn.user.phoneNumber]
+                        UserDefaults.standard.set(saveParameter, forKey: AccountUSDF.saveAccount)
+                        ProgressHUD.dismiss()
+                    }
+                }else{
+                    print("SignIn Fail")
+                }
             }
         }
     }

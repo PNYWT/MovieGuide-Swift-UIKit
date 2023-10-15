@@ -20,14 +20,6 @@ struct RetReturn{
         case total_results
         case results
     }
-    
-//    init(from decoder: Decoder) throws {
-//        let container = try decoder.container(keyedBy: CodingKeys.self)
-//        page = try container.decodeIfPresent([GetMenuData].self, forKey: .page)
-//        total_pages = try container.decodeIfPresent([GetMenuData].self, forKey: .total_pages)
-//        total_results = try container.decodeIfPresent([GetMenuData].self, forKey: .total_results)
-//        results = try container.decodeIfPresent([GetMenuData].self, forKey: .results)
-//    }
 }
 
 class CenterConfigService{
@@ -88,30 +80,5 @@ class CenterConfigService{
             paramTemp["language"] = "en-US"
         }
         return paramTemp
-    }
-}
-
-
-func logResponse(url:String,status:Int,data:Data?,_type: APIStatus){
-    guard let components = URLComponents(string: url)?.url else{
-        return
-    }
-    
-    if let dataSucc = data, showLog == true{
-        do{
-            let jsonObject = try JSONSerialization.jsonObject(with: dataSucc, options: [])
-            let prettyJsonData = try JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted)
-            let prettyJsonString = String(data: prettyJsonData, encoding: .utf8) ?? ""
-            switch _type{
-            case .REQUEST:
-                print("url : \(components) -----> REQUEST \n status code -> \(status)")
-                print(prettyJsonString)
-            case .RESPONSE:
-                print("url : \(components)  <------ RESPONSE \n status code -> \(status)")
-                print(prettyJsonString)
-            }
-        }catch let error{
-            print("logResponse ->  \(error.localizedDescription)")
-        }
     }
 }

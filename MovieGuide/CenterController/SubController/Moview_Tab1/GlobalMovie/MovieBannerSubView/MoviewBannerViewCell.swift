@@ -21,14 +21,8 @@ class MoviewBannerViewCell: UICollectionViewCell {
     func setUI(md:UpComingModel?){
         if let md_Tmp = md{
             guard let posterString = md_Tmp.posterImageURL else {return}
-            let urlString = DomainPath.pathImg(posterString: posterString)
-            
-            guard let posterImageURL = URL(string: urlString) else {
-                self.imgBanner.image = UIImage.init(systemName: "")
-                return
-            }
-            self.imgBanner.getImageDataFrom(url: posterImageURL)
-            self.bgBanner.getImageDataFrom(url: posterImageURL)
+            imgBanner.sd_setImage(with: URL(string: DomainPath.pathImg(posterString: posterString)))
+            bgBanner.sd_setImage(with: URL(string: DomainPath.pathImg(posterString: posterString)))
             
             if let score = md_Tmp.voteScore{
                 lbScore.text = "Score: \(score)"

@@ -68,20 +68,18 @@ extension NavController: UINavigationControllerDelegate{
     }
     
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+        let img = UIImage(systemName: "person.crop.circle")!.withRenderingMode(.alwaysOriginal)
+        let loginBtn = UIBarButtonItem(image: img, style: .plain, target: self, action: #selector(gotoLoginVC))
         
         switch viewController{
         case is MainMovieVC, is TVShowVC, is DetailSelectVC:
             tabBarController?.tabBar.isHidden = false
             if viewController.isKind(of: MainMovieVC.classForCoder()){
                 viewController.title = "Movie"
-                
-                
-                let img = UIImage(systemName: "person.crop.circle")!.withRenderingMode(.alwaysOriginal)
-                let loginBtn = UIBarButtonItem(image: img, style: .plain, target: self, action: #selector(gotoLoginVC))
                 viewController.navigationItem.rightBarButtonItems = [loginBtn]
-                
             }else if viewController.isKind(of: TVShowVC.classForCoder()){
                 viewController.title = "TV Show"
+                viewController.navigationItem.rightBarButtonItems = [loginBtn]
             }else if viewController.isKind(of: DetailSelectVC.classForCoder()){
                 viewController.title = "Detail"
                 tabBarController?.tabBar.isHidden = true

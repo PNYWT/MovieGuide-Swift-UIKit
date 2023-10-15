@@ -10,6 +10,7 @@ import GoogleMobileAds
 
 import FirebaseCore
 import FirebaseMessaging
+import ProgressHUD
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -36,7 +37,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.setValue(DateTime.getCurrentDate(), forKey: KeysUSDF.checkShowWelcome)
         }
         
+        setupProgressHUD()
+        
         return true
+    }
+    
+    private func setupProgressHUD(){
+        ProgressHUD.animationType = .activityIndicator
+        ProgressHUD.mediaSize = 25
+        ProgressHUD.marginSize = 25
+        ProgressHUD.fontStatus = .boldSystemFont(ofSize: 14)
     }
 
     // MARK: UISceneSession Lifecycle

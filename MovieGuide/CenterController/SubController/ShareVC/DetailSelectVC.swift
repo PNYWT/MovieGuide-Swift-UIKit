@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 enum typeData{
     case movie
@@ -88,12 +89,7 @@ class DetailSelectVC: UIViewController {
         if type == .movie{
             if let md = movieIDData {
                 guard let posterString = md.posterImageURL else {return}
-                
-                guard let posterImageURL = URL(string: DomainPath.pathImg(posterString: posterString)) else {
-                    self.imgMovie.image = UIImage.init(systemName: "")
-                    return
-                }
-                self.imgMovie.getImageDataFrom(url: posterImageURL)
+                imgMovie.sd_setImage(with: URL(string: DomainPath.pathImg(posterString: posterString)))
                 
                 lbTitleMovie.text = md.title
                 
@@ -117,11 +113,7 @@ class DetailSelectVC: UIViewController {
         }else{
             if let md = tvSeriesIDData {
                 guard let posterString = md.posterImageURL else {return}
-                guard let posterImageURL = URL(string: DomainPath.pathImg(posterString: posterString)) else {
-                    self.imgMovie.image = UIImage.init(systemName: "")
-                    return
-                }
-                self.imgMovie.getImageDataFrom(url: posterImageURL)
+                imgMovie.sd_setImage(with: URL(string: DomainPath.pathImg(posterString: posterString)))
                 
                 lbTitleMovie.text = md.title
                 

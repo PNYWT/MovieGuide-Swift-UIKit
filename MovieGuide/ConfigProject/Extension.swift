@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SDWebImage
 
 class DomainPath{
     static func pathImg(posterString:String)-> String{
@@ -55,26 +56,6 @@ extension UILabel{
         self.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
         self.layer.shadowOpacity = 1.0
         self.layer.shadowRadius = 2.0
-    }
-}
-
-extension UIImageView{
-    func getImageDataFrom(url: URL){
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if let error = error {
-                print("DataTask error: \(error.localizedDescription)")
-                return
-            }
-            guard let data = data else {
-                print("Empty Data")
-                return
-            }
-            DispatchQueue.main.async {
-                if let image = UIImage(data: data) {
-                    self.image = image
-                }
-            }
-        }.resume()
     }
 }
 

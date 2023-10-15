@@ -13,4 +13,8 @@ class KeysUSDF{
     static let checkShowWelcome = "ShowWelcome"
 }
 
+class AccountUSDF{
+    static let saveAccount = "saveAccount"
+}
+
 

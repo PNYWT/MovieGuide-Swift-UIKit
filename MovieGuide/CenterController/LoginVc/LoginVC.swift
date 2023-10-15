@@ -20,7 +20,7 @@ class LoginVC: UIViewController {
         setBtnSignInApple()
         setBtnSignInWithEmail()
         setNotNow()
-//        setTermsandConditions()
+        setTermsandConditions()
     }
     
     private func setBtnSignInWithEmail(){
@@ -40,7 +40,7 @@ class LoginVC: UIViewController {
         var fontArray = [UIFont]()
         var colorArray = [UIColor]()
         textArray.append("This is Term")
-        textArray.append("This is Conditions")
+        textArray.append("and Conditions")
         fontArray.append(UIFont.systemFont(ofSize: 14, weight: .light))
         fontArray.append(UIFont.systemFont(ofSize: 18, weight: .bold))
         colorArray.append(UIColor.init(white: 1, alpha: 0.8))
@@ -69,7 +69,7 @@ class LoginVC: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 //    x: (ความกว้างจอ - ความกว้างของ View ที่ต้องการให้อยู่ตรงกลาง)/2
-        signInBtnApple.frame = CGRect(x: (self.view.frame.width - 140)/2, y: self.view.frame.height/2, width: 140, height: 50)
+        signInBtnApple.frame = CGRect(x: (self.view.frame.width - 140)/2, y: (self.view.frame.height/2) - 50, width: 140, height: 50)
         signInBtnApple.layer.cornerRadius = signInBtnApple.frame.height/2
         signInBtnApple.layer.masksToBounds = true
         
@@ -82,8 +82,7 @@ class LoginVC: UIViewController {
         
         
         lbNotNow.frame = CGRect(x: 0, y: signInBtnEmail.frame.origin.y + signInBtnEmail.frame.height + spaceDefualt*2, width: self.view.frame.width, height: calTextHeight(label: lbNotNow))
-//
-//        lbTermsAndConditions.frame = CGRect(x: 0, y: lbNotNow.frame.origin.y + lbNotNow.frame.height + spaceDefualt*2, width: self.view.frame.width, height: calTextHeight(label: lbTermsAndConditions))
+        lbTermsAndConditions.frame = CGRect(x: 0, y: view.frame.height - calTextHeight(label: lbTermsAndConditions) - getSaftArea().bottom, width: self.view.frame.width, height: calTextHeight(label: lbTermsAndConditions))
     }
     
     func calTextHeight(label:UILabel)->CGFloat{

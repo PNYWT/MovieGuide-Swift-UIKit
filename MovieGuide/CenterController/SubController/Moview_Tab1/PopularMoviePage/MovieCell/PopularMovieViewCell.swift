@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class PopularMovieViewCell: UITableViewCell {
     
@@ -39,12 +40,6 @@ class PopularMovieViewCell: UITableViewCell {
         
         
         guard let posterString = poster else {return}
-        urlString = DomainPath.pathImg(posterString: posterString)
-        
-        guard let posterImageURL = URL(string: urlString) else {
-            self.imgMovie.image = UIImage.init(systemName: "")
-            return
-        }
-        self.imgMovie.getImageDataFrom(url: posterImageURL)
+        imgMovie.sd_setImage(with: URL(string: DomainPath.pathImg(posterString: posterString)))
     }
 }
