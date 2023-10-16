@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8019FE742ADBBBE800C4B3F5 /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8019FE732ADBBBE800C4B3F5 /* Widget.swift */; };
+		8019FE7B2ADBBF6900C4B3F5 /* WedgetItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8019FE7A2ADBBF6900C4B3F5 /* WedgetItem.swift */; };
+		8019FE822ADBBFC100C4B3F5 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8019FE812ADBBFC100C4B3F5 /* WidgetKit.framework */; };
+		8019FE842ADBBFC100C4B3F5 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8019FE832ADBBFC100C4B3F5 /* SwiftUI.framework */; };
+		8019FE872ADBBFC100C4B3F5 /* Wiedgets_ScreenBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8019FE862ADBBFC100C4B3F5 /* Wiedgets_ScreenBundle.swift */; };
+		8019FE892ADBBFC100C4B3F5 /* Wiedgets_ScreenLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8019FE882ADBBFC100C4B3F5 /* Wiedgets_ScreenLiveActivity.swift */; };
+		8019FE8B2ADBBFC100C4B3F5 /* Wiedgets_Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8019FE8A2ADBBFC100C4B3F5 /* Wiedgets_Screen.swift */; };
+		8019FE8E2ADBBFC200C4B3F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8019FE8D2ADBBFC200C4B3F5 /* Assets.xcassets */; };
+		8019FE902ADBBFC200C4B3F5 /* Wiedgets_Screen.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 8019FE8C2ADBBFC100C4B3F5 /* Wiedgets_Screen.intentdefinition */; };
+		8019FE912ADBBFC200C4B3F5 /* Wiedgets_Screen.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 8019FE8C2ADBBFC100C4B3F5 /* Wiedgets_Screen.intentdefinition */; };
+		8019FE942ADBBFC200C4B3F5 /* Wiedgets_ScreenExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8019FE802ADBBFC100C4B3F5 /* Wiedgets_ScreenExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		807260932AD8590D00DCFA1B /* DateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807260922AD8590D00DCFA1B /* DateTime.swift */; };
 		807260952AD85DBB00DCFA1B /* GetConstantLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807260942AD85DBB00DCFA1B /* GetConstantLayout.swift */; };
 		807260972AD86C8D00DCFA1B /* CenterConfigService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807260962AD86C8D00DCFA1B /* CenterConfigService.swift */; };
@@ -72,9 +83,44 @@
 		D7B215E22ADB9D700030EA4D /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B215E12ADB9D700030EA4D /* AccountModel.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		8019FE922ADBBFC200C4B3F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80A3D0582AB6F1BB00F30517 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8019FE7F2ADBBFC100C4B3F5;
+			remoteInfo = Wiedgets_ScreenExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8019FE982ADBBFC200C4B3F5 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8019FE942ADBBFC200C4B3F5 /* Wiedgets_ScreenExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		02D681A128EB8C3635A0A29E /* Pods_MovieGuide.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieGuide.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39E2E3467D66492F35444D04 /* Pods-MovieGuide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieGuide.release.xcconfig"; path = "Target Support Files/Pods-MovieGuide/Pods-MovieGuide.release.xcconfig"; sourceTree = "<group>"; };
+		8019FE732ADBBBE800C4B3F5 /* Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget.swift; sourceTree = "<group>"; };
+		8019FE7A2ADBBF6900C4B3F5 /* WedgetItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WedgetItem.swift; sourceTree = "<group>"; };
+		8019FE802ADBBFC100C4B3F5 /* Wiedgets_ScreenExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Wiedgets_ScreenExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		8019FE812ADBBFC100C4B3F5 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		8019FE832ADBBFC100C4B3F5 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		8019FE862ADBBFC100C4B3F5 /* Wiedgets_ScreenBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wiedgets_ScreenBundle.swift; sourceTree = "<group>"; };
+		8019FE882ADBBFC100C4B3F5 /* Wiedgets_ScreenLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wiedgets_ScreenLiveActivity.swift; sourceTree = "<group>"; };
+		8019FE8A2ADBBFC100C4B3F5 /* Wiedgets_Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wiedgets_Screen.swift; sourceTree = "<group>"; };
+		8019FE8C2ADBBFC100C4B3F5 /* Wiedgets_Screen.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Wiedgets_Screen.intentdefinition; sourceTree = "<group>"; };
+		8019FE8D2ADBBFC200C4B3F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8019FE8F2ADBBFC200C4B3F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		807260922AD8590D00DCFA1B /* DateTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTime.swift; sourceTree = "<group>"; };
 		807260942AD85DBB00DCFA1B /* GetConstantLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetConstantLayout.swift; sourceTree = "<group>"; };
 		807260962AD86C8D00DCFA1B /* CenterConfigService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterConfigService.swift; sourceTree = "<group>"; };
@@ -144,6 +190,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8019FE7D2ADBBFC100C4B3F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8019FE842ADBBFC100C4B3F5 /* SwiftUI.framework in Frameworks */,
+				8019FE822ADBBFC100C4B3F5 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		80A3D05D2AB6F1BB00F30517 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -159,14 +214,39 @@
 			isa = PBXGroup;
 			children = (
 				02D681A128EB8C3635A0A29E /* Pods_MovieGuide.framework */,
+				8019FE812ADBBFC100C4B3F5 /* WidgetKit.framework */,
+				8019FE832ADBBFC100C4B3F5 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8019FE752ADBBEF300C4B3F5 /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				8019FE732ADBBBE800C4B3F5 /* Widget.swift */,
+				8019FE7A2ADBBF6900C4B3F5 /* WedgetItem.swift */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
+		8019FE852ADBBFC100C4B3F5 /* Wiedgets_Screen */ = {
+			isa = PBXGroup;
+			children = (
+				8019FE862ADBBFC100C4B3F5 /* Wiedgets_ScreenBundle.swift */,
+				8019FE882ADBBFC100C4B3F5 /* Wiedgets_ScreenLiveActivity.swift */,
+				8019FE8A2ADBBFC100C4B3F5 /* Wiedgets_Screen.swift */,
+				8019FE8C2ADBBFC100C4B3F5 /* Wiedgets_Screen.intentdefinition */,
+				8019FE8D2ADBBFC200C4B3F5 /* Assets.xcassets */,
+				8019FE8F2ADBBFC200C4B3F5 /* Info.plist */,
+			);
+			path = Wiedgets_Screen;
 			sourceTree = "<group>";
 		};
 		80A3D0572AB6F1BB00F30517 = {
 			isa = PBXGroup;
 			children = (
 				80A3D0622AB6F1BB00F30517 /* MovieGuide */,
+				8019FE852ADBBFC100C4B3F5 /* Wiedgets_Screen */,
 				80A3D0612AB6F1BB00F30517 /* Products */,
 				D129DAB11FFA38A343AAC935 /* Pods */,
 				728FCFB5DFACAD2E1D65F627 /* Frameworks */,
@@ -177,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				80A3D0602AB6F1BB00F30517 /* MovieGuide.app */,
+				8019FE802ADBBFC100C4B3F5 /* Wiedgets_ScreenExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -186,6 +267,7 @@
 			children = (
 				80A3D0BE2AB6F27D00F30517 /* AppDelegate.swift */,
 				80A3D0782AB6F27D00F30517 /* SceneDelegate.swift */,
+				8019FE752ADBBEF300C4B3F5 /* Widget */,
 				80A3D0B72AB6F27D00F30517 /* ConfigProject */,
 				80A3D0B22AB6F27D00F30517 /* Admob */,
 				80A3D0792AB6F27D00F30517 /* CenterController */,
@@ -448,6 +530,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8019FE7F2ADBBFC100C4B3F5 /* Wiedgets_ScreenExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8019FE952ADBBFC200C4B3F5 /* Build configuration list for PBXNativeTarget "Wiedgets_ScreenExtension" */;
+			buildPhases = (
+				8019FE7C2ADBBFC100C4B3F5 /* Sources */,
+				8019FE7D2ADBBFC100C4B3F5 /* Frameworks */,
+				8019FE7E2ADBBFC100C4B3F5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Wiedgets_ScreenExtension;
+			productName = Wiedgets_ScreenExtension;
+			productReference = 8019FE802ADBBFC100C4B3F5 /* Wiedgets_ScreenExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		80A3D05F2AB6F1BB00F30517 /* MovieGuide */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 80A3D0742AB6F1BC00F30517 /* Build configuration list for PBXNativeTarget "MovieGuide" */;
@@ -457,10 +556,12 @@
 				80A3D05D2AB6F1BB00F30517 /* Frameworks */,
 				80A3D05E2AB6F1BB00F30517 /* Resources */,
 				AD148C66890BC3D2A7ECAACB /* [CP] Embed Pods Frameworks */,
+				8019FE982ADBBFC200C4B3F5 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8019FE932ADBBFC200C4B3F5 /* PBXTargetDependency */,
 			);
 			name = MovieGuide;
 			productName = MovieGuide;
@@ -477,6 +578,9 @@
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					8019FE7F2ADBBFC100C4B3F5 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
 					80A3D05F2AB6F1BB00F30517 = {
 						CreatedOnToolsVersion = 14.3.1;
 						LastSwiftMigration = 1430;
@@ -497,11 +601,20 @@
 			projectRoot = "";
 			targets = (
 				80A3D05F2AB6F1BB00F30517 /* MovieGuide */,
+				8019FE7F2ADBBFC100C4B3F5 /* Wiedgets_ScreenExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8019FE7E2ADBBFC100C4B3F5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8019FE8E2ADBBFC200C4B3F5 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		80A3D05E2AB6F1BB00F30517 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -577,6 +690,17 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8019FE7C2ADBBFC100C4B3F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8019FE902ADBBFC200C4B3F5 /* Wiedgets_Screen.intentdefinition in Sources */,
+				8019FE892ADBBFC100C4B3F5 /* Wiedgets_ScreenLiveActivity.swift in Sources */,
+				8019FE8B2ADBBFC100C4B3F5 /* Wiedgets_Screen.swift in Sources */,
+				8019FE872ADBBFC100C4B3F5 /* Wiedgets_ScreenBundle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		80A3D05C2AB6F1BB00F30517 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -586,9 +710,11 @@
 				80A3D0F82AB6F27E00F30517 /* LocationManager.swift in Sources */,
 				80A3D0D82AB6F27E00F30517 /* CustomSegmentControll.swift in Sources */,
 				80A3D0E92AB6F27E00F30517 /* PopularTVSeriesVC.swift in Sources */,
+				8019FE7B2ADBBF6900C4B3F5 /* WedgetItem.swift in Sources */,
 				80A3D0DB2AB6F27E00F30517 /* MoviewBannerViewCell.swift in Sources */,
 				80A3D0ED2AB6F27E00F30517 /* TabBarController.swift in Sources */,
 				80A3D0D92AB6F27E00F30517 /* MovieBanner.swift in Sources */,
+				8019FE912ADBBFC200C4B3F5 /* Wiedgets_Screen.intentdefinition in Sources */,
 				80A3D0DD2AB6F27E00F30517 /* GenresViewCell.swift in Sources */,
 				80A3D0C72AB6F27E00F30517 /* PolicyVc.swift in Sources */,
 				80A3D0FC2AB6F27E00F30517 /* TvShowModel.swift in Sources */,
@@ -605,6 +731,7 @@
 				80A3D0F22AB6F27E00F30517 /* NativeMobileAds.swift in Sources */,
 				80A3D0D32AB6F27E00F30517 /* PopularMovieViewCell.swift in Sources */,
 				80A3D0F12AB6F27E00F30517 /* BannerMobileAds.swift in Sources */,
+				8019FE742ADBBBE800C4B3F5 /* Widget.swift in Sources */,
 				80A3D0D62AB6F27E00F30517 /* WelcomeView.swift in Sources */,
 				80A3D0E12AB6F27E00F30517 /* MainMovieVC.swift in Sources */,
 				80A3D0F52AB6F27E00F30517 /* Extension.swift in Sources */,
@@ -625,6 +752,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		8019FE932ADBBFC200C4B3F5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8019FE7F2ADBBFC100C4B3F5 /* Wiedgets_ScreenExtension */;
+			targetProxy = 8019FE922ADBBFC200C4B3F5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		80A3D06E2AB6F1BC00F30517 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -637,6 +772,60 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		8019FE962ADBBFC200C4B3F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Wiedgets_Screen/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Wiedgets_Screen;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "callmeoni.MovieGuide.Wiedgets-Screen";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8019FE972ADBBFC200C4B3F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Wiedgets_Screen/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Wiedgets_Screen;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "callmeoni.MovieGuide.Wiedgets-Screen";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		80A3D0722AB6F1BC00F30517 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -755,12 +944,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8A8B5A8B3A97B9AC32A2FBF4 /* Pods-MovieGuide.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = FYTDS8YWKN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MovieGuide/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -788,12 +978,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 39E2E3467D66492F35444D04 /* Pods-MovieGuide.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = FYTDS8YWKN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MovieGuide/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -819,6 +1010,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8019FE952ADBBFC200C4B3F5 /* Build configuration list for PBXNativeTarget "Wiedgets_ScreenExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8019FE962ADBBFC200C4B3F5 /* Debug */,
+				8019FE972ADBBFC200C4B3F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		80A3D05B2AB6F1BB00F30517 /* Build configuration list for PBXProject "MovieGuide" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

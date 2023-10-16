@@ -12,6 +12,8 @@ import FirebaseCore
 import FirebaseMessaging
 import ProgressHUD
 
+import WidgetKit
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -38,6 +40,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         setupProgressHUD()
+        
+        if #available(iOS 14.0, *) {
+            WidgetCenter.shared.reloadAllTimelines()
+        }
         
         return true
     }

@@ -7,7 +7,12 @@
 		<key>MovieGuide.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>18</integer>
+			<integer>19</integer>
+		</dict>
+		<key>Wiedgets_ScreenExtension.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>21</integer>
 		</dict>
 	</dict>
 </dict>
