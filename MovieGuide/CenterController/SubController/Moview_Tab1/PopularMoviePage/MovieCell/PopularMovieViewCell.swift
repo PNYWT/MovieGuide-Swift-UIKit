@@ -34,7 +34,7 @@ class PopularMovieViewCell: UITableViewCell {
         self.titleMovie.text = title
         self.titleMovie.font = UIFont.boldSystemFont(ofSize: 18)
         self.detailMovie.text = overview
-        self.yearMovie.text = convertDateFormater(releaseDate)
+        self.yearMovie.text = DateTime.convertDateFormater(releaseDate)
         guard let rate = rating else {return}
         self.rateMovie.text = String.init(format: "Score: %@/10", "\(rate)")
         

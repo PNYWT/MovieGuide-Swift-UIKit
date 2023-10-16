@@ -8,6 +8,21 @@
 import Foundation
 import Alamofire
 
+extension KeyedDecodingContainer {
+    func decodeToAnyString(forKey key: K) throws -> String? {
+        do {
+            if let stringValue = try decodeIfPresent(String.self, forKey: key){
+                return stringValue
+            }
+        }catch DecodingError.typeMismatch {
+            if let intValue = try decodeIfPresent(Int.self, forKey: key){
+                return String(intValue)
+            }
+        }
+        return nil
+    }
+}
+
 struct RetReturn{
     var page:String?
     var total_pages:String?

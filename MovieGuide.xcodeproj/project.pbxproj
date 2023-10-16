@@ -69,6 +69,7 @@
 		80A3D0FD2AB6F27E00F30517 /* APITVSeries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A3D0C52AB6F27E00F30517 /* APITVSeries.swift */; };
 		80A3D0FF2AB6F3E800F30517 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 80A3D0FE2AB6F3E800F30517 /* GoogleService-Info.plist */; };
 		8F841D857B7A7E10EF9DCB01 /* Pods_MovieGuide.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02D681A128EB8C3635A0A29E /* Pods_MovieGuide.framework */; };
+		D7B215E22ADB9D700030EA4D /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B215E12ADB9D700030EA4D /* AccountModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -139,6 +140,7 @@
 		80A3D0C52AB6F27E00F30517 /* APITVSeries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITVSeries.swift; sourceTree = "<group>"; };
 		80A3D0FE2AB6F3E800F30517 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8A8B5A8B3A97B9AC32A2FBF4 /* Pods-MovieGuide.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieGuide.debug.xcconfig"; path = "Target Support Files/Pods-MovieGuide/Pods-MovieGuide.debug.xcconfig"; sourceTree = "<group>"; };
+		D7B215E12ADB9D700030EA4D /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -401,6 +403,7 @@
 			isa = PBXGroup;
 			children = (
 				807260962AD86C8D00DCFA1B /* CenterConfigService.swift */,
+				D7B215E02ADB9D660030EA4D /* Account */,
 				80A3D0C02AB6F27E00F30517 /* MovieAPI */,
 				80A3D0C32AB6F27E00F30517 /* TvAPI */,
 			);
@@ -432,6 +435,14 @@
 				39E2E3467D66492F35444D04 /* Pods-MovieGuide.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		D7B215E02ADB9D660030EA4D /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				D7B215E12ADB9D700030EA4D /* AccountModel.swift */,
+			);
+			path = Account;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -584,6 +595,7 @@
 				80A3D0CB2AB6F27E00F30517 /* LoginWithOtherVC.swift in Sources */,
 				80A3D0E22AB6F27E00F30517 /* OnAirTVSeriesVC.swift in Sources */,
 				80A3D0F62AB6F27E00F30517 /* ConfigURL.swift in Sources */,
+				D7B215E22ADB9D700030EA4D /* AccountModel.swift in Sources */,
 				80A3D0FD2AB6F27E00F30517 /* APITVSeries.swift in Sources */,
 				80A3D0F72AB6F27E00F30517 /* ConfigApp.swift in Sources */,
 				80A3D0D52AB6F27E00F30517 /* TopRateMovieVC.swift in Sources */,

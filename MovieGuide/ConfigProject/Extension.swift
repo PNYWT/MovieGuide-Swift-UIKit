@@ -15,40 +15,6 @@ class DomainPath{
     }
 }
 
-// MARK: - Convert date format
-func convertDateFormater(_ date: String?) -> String {
-    var fixDate = ""
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy-MM-dd"
-    if let originalDate = date {
-        if let newDate = dateFormatter.date(from: originalDate) {
-            dateFormatter.dateFormat = "dd/MM/yyyy"
-            fixDate = dateFormatter.string(from: newDate)
-        }
-    }
-    return fixDate
-}
-
-func numberformatter(number:Int?) -> String{
-    let formatter = NumberFormatter()
-    formatter.numberStyle = .decimal
-    formatter.groupingSeparator = ","
-    if let number_Tmp = number{
-        let formattedNumber = formatter.string(from: NSNumber(value: number_Tmp))!
-        return formattedNumber
-    }else{
-        return "\(number ?? 0)"
-    }
-}
-
-func convertToTimeFormat(_ minutes: Int) -> String {
-    let hours = minutes / 60
-    let minutes = minutes % 60
-    let hoursString = String(format: "%2d", hours)
-    let minutesString = String(format: "%02d", minutes)
-    return "\(hoursString)h \(minutesString)m"
-}
-
 //MARK: extension UILabel
 extension UILabel{
     func addShadowLabel(){
@@ -145,39 +111,6 @@ extension UIView{
         layer.shadowOffset = offset
         layer.shadowRadius = radius
         layer.masksToBounds = false
-    }
-}
-
-//MARK: UIWindow
-extension UIWindow {
-    func visibleViewController() -> UIViewController? {
-        if let rootViewController = self.rootViewController {
-            return UIWindow.getVisibleViewController(from: rootViewController)
-        }
-        return nil
-    }
-
-    private static func getVisibleViewController(from vc: UIViewController) -> UIViewController {
-        if let navigationController = vc as? UINavigationController {
-            return UIWindow.getVisibleViewController(from: navigationController.visibleViewController!)
-        } else if let tabBarController = vc as? UITabBarController {
-            return UIWindow.getVisibleViewController(from: tabBarController.selectedViewController!)
-        } else {
-            if let presentedViewController = vc.presentedViewController {
-                return UIWindow.getVisibleViewController(from: presentedViewController)
-            } else {
-                return vc
-            }
-        }
-    }
-    
-    //MARK: topViewController
-    func topViewController() -> UIViewController? {
-        var top = self.rootViewController
-        while let presented = top?.presentedViewController {
-            top = presented
-        }
-        return top
     }
 }
 
