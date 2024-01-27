@@ -6,10 +6,6 @@
 //
 
 import UIKit
-import GoogleMobileAds
-
-import FirebaseCore
-import FirebaseMessaging
 import ProgressHUD
 
 import WidgetKit
@@ -22,33 +18,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        GADMobileAds.sharedInstance().start()
-        FirebaseApp.configure()
-        Messaging.messaging().delegate = self
-        UNUserNotificationCenter.current().delegate = self
-
-        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-        UNUserNotificationCenter.current().requestAuthorization(
-          options: authOptions,
-          completionHandler: { _, _ in }
-        )
-
-        application.registerForRemoteNotifications()
         
-        if UserDefaults.standard.string(forKey: KeysUSDF.checkShowWelcome) != DateTime.getCurrentDate(){
-            UserDefaults.standard.setValue(DateTime.getCurrentDate(), forKey: KeysUSDF.checkShowWelcome)
-        }
-        
-        setupProgressHUD()
-        
-        if #available(iOS 14.0, *) {
-            WidgetCenter.shared.reloadAllTimelines()
-        }
+        setupApp()
         
         return true
     }
     
-    private func setupProgressHUD(){
+    private func setupApp(){
+        if #available(iOS 14.0, *) {
+            WidgetCenter.shared.reloadAllTimelines()
+        }
+        
+        KeyChainManager.storeKey("d86faff0304420d80a4eb8624dd3a665", forKey: ConfigURL.API_KEY)
+        KeyChainManager.storeKey("AIzaSyDTmMzB_ClK_A4RbeQeEb70SEzAcp-o9LA", forKey: ConfigURL.YoutubeAPI_KEY)
         ProgressHUD.animationType = .activityIndicator
         ProgressHUD.mediaSize = 25
         ProgressHUD.marginSize = 25
@@ -67,80 +49,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
-    }
-}
-
-extension AppDelegate{
-    static func shareAppDelegate() -> AppDelegate {
-        var appDelegate: AppDelegate?
-        DispatchQueue.main.async {
-            appDelegate = UIApplication.shared.delegate as? AppDelegate
-        }
-        return appDelegate ?? UIApplication.shared.delegate as! AppDelegate
-    }
-    
-    
-    static func shareViewController(base: UIViewController? = UIApplication.shared.connectedScenes
-                                            .compactMap { $0 as? UIWindowScene }
-                                            .flatMap { $0.windows }
-                                            .filter { $0.isKeyWindow }
-                                            .first?
-                                            .rootViewController) -> UIViewController? {
-
-        if let nav = base as? UINavigationController {
-            return shareViewController(base: nav.visibleViewController)
-        } else if let tab = base as? UITabBarController, let selected = tab.selectedViewController {
-            return shareViewController(base: selected)
-        } else if let presented = base?.presentedViewController {
-            return shareViewController(base: presented)
-        }
-
-        return base
-    }
-    
-    func goMain(){
-        guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else {
-            return
-        }
-        guard let winScene = sceneDelegate.window?.windowScene else { return }
-        if UserDefaults.standard.bool(forKey: KeysUSDF.saveLogin) == true{
-            window = UIWindow(windowScene: winScene)
-            window?.rootViewController = TabBarController()
-            window?.makeKeyAndVisible()
-        }else{
-            let nav:NavController = NavController.init(rootViewController: LoginVC())
-            window = UIWindow(windowScene: winScene)
-            window?.rootViewController = nav
-            window?.makeKeyAndVisible()
-        }
-    }
-}
-
-extension AppDelegate:MessagingDelegate, UNUserNotificationCenterDelegate{
-    
-    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-      print("Firebase registration token: \(String(describing: fcmToken))")
-
-      let dataDict: [String: String] = ["token": fcmToken ?? ""]
-      NotificationCenter.default.post(
-        name: Notification.Name("FCMToken"),
-        object: nil,
-        userInfo: dataDict
-      )
-      // TODO: If necessary send token to application server.
-      // Note: This callback is fired at each app startup and whenever a new token is generated.
-    }
-    
-    func application(application: UIApplication,
-                     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-      Messaging.messaging().apnsToken = deviceToken
-    }
-
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        print("userNotificationCenter -> willPresent")
-    }
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        print("userNotificationCenter -> didReceive")
     }
 }

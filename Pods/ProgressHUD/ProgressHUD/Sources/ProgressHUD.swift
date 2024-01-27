@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2023 Related Code - https://relatedcode.com
+// Copyright (c) 2024 Related Code - https://relatedcode.com
 //
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -42,7 +42,7 @@ public class ProgressHUD: UIView {
 	var labelStatus: UILabel?
 
 	var viewProgress: ProgressView?
-	var viewAnimatedIcon: UIView?
+	var viewLiveIcon: UIView?
 	var viewStaticImage: UIImageView?
 	var viewAnimation: UIView?
 
@@ -66,10 +66,7 @@ public class ProgressHUD: UIView {
 	let keyboardDidHide			= UIResponder.keyboardDidHideNotification
 	let orientationDidChange	= UIDevice.orientationDidChangeNotification
 
-	static let shared: ProgressHUD = {
-		let instance = ProgressHUD()
-		return instance
-	} ()
+	static let shared = ProgressHUD()
 
 	convenience private init() {
 		self.init(frame: UIScreen.main.bounds)
@@ -85,10 +82,10 @@ public class ProgressHUD: UIView {
 	}
 }
 
-// MARK: - Setup
+// MARK: - Progress
 extension ProgressHUD {
 
-	func setup(text: String?, progress: CGFloat? = nil, animatedIcon: AnimatedIcon? = nil, staticImage: UIImage? = nil, interaction: Bool, delay: TimeInterval? = nil) {
+	func progress(text: String?, value: CGFloat, interaction: Bool) {
 
 		removeDelayTimer()
 
@@ -97,34 +94,86 @@ extension ProgressHUD {
 		setupToolbar()
 		setupStatus(text)
 
-		var animation = false
+		removeLiveIcon()
+		removeStaticImage()
+		removeAnimationView()
+		setupProgressView(value)
 
-		if let progress {
-			removeAnimatedIcon()
-			removeStaticImage()
-			removeAnimationView()
-			setupProgressView(progress)
-		} else if let animatedIcon {
-			removeProgressView()
-			removeStaticImage()
-			removeAnimationView()
-			setupAnimatedIcon(animatedIcon)
-			setupDelayTimer(text, delay)
-		} else if let staticImage {
-			removeProgressView()
-			removeAnimatedIcon()
-			removeAnimationView()
-			setupStaticImage(staticImage)
-			setupDelayTimer(text, delay)
-		} else {
-			removeProgressView()
-			removeAnimatedIcon()
-			removeStaticImage()
-			setupAnimationView()
-			animation = true
-		}
+		setupSizes(text, false)
+		setupNotifications()
+		setupPosition()
+		displayHUD()
+	}
+}
 
-		setupSizes(text, animation)
+// MARK: - Live Icon
+extension ProgressHUD {
+
+	func liveIcon(text: String?, icon: LiveIcon, interaction: Bool, delay: TimeInterval?) {
+
+		removeDelayTimer()
+
+		setupWindow()
+		setupBackground(interaction)
+		setupToolbar()
+		setupStatus(text)
+
+		removeStaticImage()
+		removeProgressView()
+		removeAnimationView()
+		setupLiveIcon(icon)
+		setupDelayTimer(text, delay)
+
+		setupSizes(text, false)
+		setupNotifications()
+		setupPosition()
+		displayHUD()
+	}
+}
+
+// MARK: - Static Image
+extension ProgressHUD {
+
+	func staticImage(text: String?, image: UIImage?, interaction: Bool, delay: TimeInterval?) {
+
+		removeDelayTimer()
+
+		setupWindow()
+		setupBackground(interaction)
+		setupToolbar()
+		setupStatus(text)
+
+		removeLiveIcon()
+		removeProgressView()
+		removeAnimationView()
+		setupStaticImage(image)
+		setupDelayTimer(text, delay)
+
+		setupSizes(text, false)
+		setupNotifications()
+		setupPosition()
+		displayHUD()
+	}
+}
+
+// MARK: - Animation
+extension ProgressHUD {
+
+	func animate(text: String?, interaction: Bool) {
+
+		removeDelayTimer()
+
+		setupWindow()
+		setupBackground(interaction)
+		setupToolbar()
+		setupStatus(text)
+
+		removeLiveIcon()
+		removeStaticImage()
+		removeProgressView()
+		setupAnimationView()
+
+		setupSizes(text, true)
 		setupNotifications()
 		setupPosition()
 		displayHUD()
@@ -145,7 +194,7 @@ extension ProgressHUD {
 
 		timerHUD = Timer.scheduledTimer(withTimeInterval: delay, repeats: false) { [weak self] _ in
 			guard let self = self else { return }
-			self.dismissHUD()
+			dismissHUD()
 		}
 	}
 }
@@ -255,7 +304,7 @@ extension ProgressHUD {
 		viewProgress = nil
 	}
 
-	private func setupProgressView(_ progress: CGFloat) {
+	private func setupProgressView(_ value: CGFloat) {
 		if (viewProgress == nil) {
 			viewProgress = ProgressView(colorProgress)
 			viewProgress?.frame = CGRect(x: 0, y: 0, width: mediaSize, height: mediaSize)
@@ -267,36 +316,36 @@ extension ProgressHUD {
 			toolbarHUD?.addSubview(viewProgress)
 		}
 
-		viewProgress.setProgress(progress)
+		viewProgress.setProgress(value)
 	}
 }
 
-// MARK: - Animated Icon
+// MARK: - Live Icon
 extension ProgressHUD {
 
-	private func removeAnimatedIcon() {
-		viewAnimatedIcon?.removeFromSuperview()
-		viewAnimatedIcon = nil
+	private func removeLiveIcon() {
+		viewLiveIcon?.removeFromSuperview()
+		viewLiveIcon = nil
 	}
 
-	private func setupAnimatedIcon(_ animatedIcon: AnimatedIcon) {
-		if (viewAnimatedIcon == nil) {
-			viewAnimatedIcon = UIView(frame: CGRect(x: 0, y: 0, width: mediaSize, height: mediaSize))
+	private func setupLiveIcon(_ icon: LiveIcon) {
+		if (viewLiveIcon == nil) {
+			viewLiveIcon = UIView(frame: CGRect(x: 0, y: 0, width: mediaSize, height: mediaSize))
 		}
 
-		guard let viewAnimatedIcon = viewAnimatedIcon else { return }
+		guard let viewLiveIcon = viewLiveIcon else { return }
 
-		if (viewAnimatedIcon.superview == nil) {
-			toolbarHUD?.addSubview(viewAnimatedIcon)
+		if (viewLiveIcon.superview == nil) {
+			toolbarHUD?.addSubview(viewLiveIcon)
 		}
 
-		viewAnimatedIcon.layer.sublayers?.forEach {
+		viewLiveIcon.layer.sublayers?.forEach {
 			$0.removeFromSuperlayer()
 		}
 
-		if (animatedIcon == .succeed)	{ animatedIconSucceed(viewAnimatedIcon)	}
-		if (animatedIcon == .failed)	{ animatedIconFailed(viewAnimatedIcon)	}
-		if (animatedIcon == .added)		{ animatedIconAdded(viewAnimatedIcon)	}
+		if (icon == .succeed)	{ liveIconSucceed(viewLiveIcon)	}
+		if (icon == .failed)	{ liveIconFailed(viewLiveIcon)	}
+		if (icon == .added)		{ liveIconAdded(viewLiveIcon)	}
 	}
 }
 
@@ -308,7 +357,7 @@ extension ProgressHUD {
 		viewStaticImage = nil
 	}
 
-	private func setupStaticImage(_ staticImage: UIImage) {
+	private func setupStaticImage(_ image: UIImage?) {
 		if (viewStaticImage == nil) {
 			viewStaticImage = UIImageView(frame: CGRect(x: 0, y: 0, width: mediaSize, height: mediaSize))
 		}
@@ -319,7 +368,7 @@ extension ProgressHUD {
 			toolbarHUD?.addSubview(viewStaticImage)
 		}
 
-		viewStaticImage.image = staticImage
+		viewStaticImage.image = image
 		viewStaticImage.contentMode = .scaleAspectFit
 	}
 }
@@ -380,10 +429,10 @@ extension ProgressHUD {
 
 	private func setupSizes(_ text: String?, _ animation: Bool) {
 		if let text {
-			if (animation == false) || (animationType != .none) {
-				setupSizesBoth(text)
-			} else {
+			if (animation) && (animationType == .none) {
 				setupSizesTextOnly(text)
+			} else {
+				setupSizesBoth(text)
 			}
 		} else {
 			setupSizesTextNone()
@@ -431,7 +480,7 @@ extension ProgressHUD {
 		toolbarHUD?.bounds = CGRect(x: 0, y: 0, width: ceil(width), height: ceil(height))
 
 		viewProgress?.center = center
-		viewAnimatedIcon?.center = center
+		viewLiveIcon?.center = center
 		viewStaticImage?.center = center
 		viewAnimation?.center = center
 
@@ -538,10 +587,10 @@ extension ProgressHUD {
 		removeDelayTimer()
 		removeNotifications()
 
-		removeAnimationView()
+		removeLiveIcon()
 		removeStaticImage()
-		removeAnimatedIcon()
 		removeProgressView()
+		removeAnimationView()
 
 		removeStatus()
 		removeToolbar()

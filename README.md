@@ -49,3 +49,7 @@ Service -> https://developers.themoviedb.org/3/getting-started/introduction
 2. น่าจะต้องเก็บ catch ภาพ โดยให้สั่งเก็บแต่ละวัน ขึ้นวันใหม่ให้ลบ catch เก่าทิ้ง แล้วเก็บอันใหม่ น่าจะช่วยเรื่องโหลดภาพช้าเวลาเข้าแอพภายในวันหลายๆ ครั้ง
 3. ระบบ Login Firebase
 4. push Notification (อาจจะทำ)
+
+27/01/24
+- เอาระบบเดิมออก วางระบบ Code ใหม่
+- โค้ดบางส่วนอ้างอิงจาก Netflix-Clone-UIKit-MVVM

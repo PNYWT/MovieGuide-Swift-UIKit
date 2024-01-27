@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2023 Related Code - https://relatedcode.com
+// Copyright (c) 2024 Related Code - https://relatedcode.com
 //
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -37,8 +37,8 @@ public enum AnimationType: CaseIterable {
 	case triangleDotShift
 }
 
-// MARK: - AnimatedIcon
-public enum AnimatedIcon {
+// MARK: - LiveIcon
+public enum LiveIcon {
 	case succeed
 	case failed
 	case added

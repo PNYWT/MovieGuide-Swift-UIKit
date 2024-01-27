@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2023 Related Code - https://relatedcode.com
+// Copyright (c) 2024 Related Code - https://relatedcode.com
 //
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -19,15 +19,15 @@ extension ProgressHUD {
 		let height = view.frame.height
 
 		let image = UIImage(systemName: animationSymbol) ?? UIImage(systemName: "questionmark")
+		let config = UIImage.SymbolConfiguration(weight: .bold)
 
 		let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height))
-		let configuration = UIImage.SymbolConfiguration(weight: .bold)
-		imageView.image = image?.applyingSymbolConfiguration(configuration)
+		imageView.image = image?.applyingSymbolConfiguration(config)
 		imageView.tintColor = colorAnimation
 		imageView.contentMode = .scaleAspectFit
 
 		if #available(iOS 17.0, *) {
-//			imageView.addSymbolEffect(.bounce, options: .repeating)
+			imageView.addSymbolEffect(.bounce, options: .repeating)
 		}
 
 		view.addSubview(imageView)

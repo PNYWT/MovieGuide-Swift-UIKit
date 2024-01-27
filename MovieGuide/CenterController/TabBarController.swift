@@ -13,7 +13,7 @@ class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTab(howMany: 2-1)
+        setupTab(howMany: 1-1)
     }
     
     private func setupTab(howMany:Int){
@@ -26,16 +26,22 @@ class TabBarController: UITabBarController {
         self.selectedIndex = 0
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let newTabBarHeight = tabBar.frame.size.height + 16
+        
+        var newFrame = tabBar.frame
+        newFrame.size.height = newTabBarHeight
+        newFrame.origin.y = view.frame.size.height - newTabBarHeight
+        
+        tabBar.frame = newFrame
+    }
+    
     private func setIndexBar(index:Int){
         switch index{
         case 0:
             let vc:NavController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavHome") as! NavController
             vc.tabBarItem = UITabBarItem.init(title: "Movie", image: UIImage(systemName: "popcorn"), selectedImage: UIImage(systemName: "popcorn.fill"))
-            arrPage.append(vc)
-            break
-        case 1:
-            let vc:NavController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavTvShow") as! NavController
-            vc.tabBarItem = UITabBarItem.init(title: "TV Show", image: UIImage(systemName: "tv"), selectedImage: UIImage(systemName: "tv.fill"))
             arrPage.append(vc)
             break
         default:

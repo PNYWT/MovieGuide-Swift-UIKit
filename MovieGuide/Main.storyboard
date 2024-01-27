@@ -1,18 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vsB-SN-89G">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wcO-7l-TaF">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Lunach ScreenVC-->
+        <scene sceneID="mBe-RM-6mP">
+            <objects>
+                <viewController storyboardIdentifier="LunachScreenVC" id="wcO-7l-TaF" customClass="LunachScreenVC" customModule="MovieGuide" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9NI-PI-zYV">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="popcorn" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="4vB-n1-Hdz">
+                                <rect key="frame" x="0.0" y="241.00000000000003" width="393" height="395.66666666666663"/>
+                                <color key="tintColor" systemColor="systemRedColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="4vB-n1-Hdz" secondAttribute="height" multiplier="1:1" id="WFB-xw-Nk3"/>
+                                </constraints>
+                            </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="3Wf-Yi-Gne">
+                                <rect key="frame" x="181.66666666666666" y="620" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="6YJ-l4-I9j"/>
+                                    <constraint firstAttribute="height" constant="30" id="xLJ-Oi-mAZ"/>
+                                </constraints>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="so9-8x-1fE"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3Wf-Yi-Gne" firstAttribute="centerY" secondItem="4vB-n1-Hdz" secondAttribute="bottom" id="AaY-f2-EmR"/>
+                            <constraint firstItem="3Wf-Yi-Gne" firstAttribute="centerX" secondItem="4vB-n1-Hdz" secondAttribute="centerX" id="cKe-Bi-7aR"/>
+                            <constraint firstItem="4vB-n1-Hdz" firstAttribute="centerX" secondItem="so9-8x-1fE" secondAttribute="centerX" id="fOO-db-1cP"/>
+                            <constraint firstItem="4vB-n1-Hdz" firstAttribute="width" secondItem="9NI-PI-zYV" secondAttribute="width" id="gFW-Mb-bYs"/>
+                            <constraint firstItem="4vB-n1-Hdz" firstAttribute="centerY" secondItem="so9-8x-1fE" secondAttribute="centerY" id="oel-mA-gWy"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imgLogoApp" destination="4vB-n1-Hdz" id="kmV-nM-wDT"/>
+                        <outlet property="loadingView" destination="3Wf-Yi-Gne" id="NaV-tF-jqS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bcm-f5-KjV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2758" y="385"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="68Y-pY-9Im">
             <objects>
-                <tabBarController id="vsB-SN-89G" customClass="TabBarController" customModule="MovieGuide" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarVC" id="vsB-SN-89G" customClass="TabBarController" customModule="MovieGuide" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lSv-5c-BzT">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -20,7 +63,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="LnQ-nC-Xcj" kind="relationship" relationship="viewControllers" id="kry-ZZ-HkG"/>
-                        <segue destination="6aO-Oj-Zvk" kind="relationship" relationship="viewControllers" id="RZn-7D-m4J"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EAD-0L-OKD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -44,122 +86,30 @@
             </objects>
             <point key="canvasLocation" x="-834" y="4"/>
         </scene>
-        <!--Main MovieVC-->
+        <!--HomeVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainMovieVC" customModule="MovieGuide" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeVC" id="BYZ-38-t0r" customClass="HomeVC" customModule="MovieGuide" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fUN-Ry-ZC9">
-                                <rect key="frame" x="0.0" y="156" width="393" height="613"/>
-                            </scrollView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="aHh-Gj-YhG">
-                                <rect key="frame" x="78.666666666666671" y="103" width="235.66666666666663" height="46"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="0YM-h5-t07"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
-                                </segments>
-                                <connections>
-                                    <action selector="selectSegment:" destination="BYZ-38-t0r" eventType="valueChanged" id="tpN-Za-pQ3"/>
-                                </connections>
-                            </segmentedControl>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="aHh-Gj-YhG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="68q-Tx-Nh0"/>
-                            <constraint firstItem="fUN-Ry-ZC9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="EfN-JX-9Fu"/>
-                            <constraint firstItem="aHh-Gj-YhG" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.6" id="T8G-Yg-d2H"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fUN-Ry-ZC9" secondAttribute="bottom" id="aG8-d7-5oR"/>
-                            <constraint firstAttribute="trailing" secondItem="fUN-Ry-ZC9" secondAttribute="trailing" id="hcf-aB-JeS"/>
-                            <constraint firstItem="fUN-Ry-ZC9" firstAttribute="top" secondItem="aHh-Gj-YhG" secondAttribute="bottom" constant="8" id="jqQ-O6-3wL"/>
-                            <constraint firstItem="aHh-Gj-YhG" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="oPb-re-Sa0"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ia0-DC-ZpI"/>
-                    <connections>
-                        <outlet property="scrMovie" destination="fUN-Ry-ZC9" id="fjB-pR-Baq"/>
-                        <outlet property="segmentControlMovie" destination="aHh-Gj-YhG" id="QLI-1O-Wqa"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="139.69465648854961" y="3.5211267605633805"/>
         </scene>
-        <!--Item-->
-        <scene sceneID="Snq-gJ-BP4">
-            <objects>
-                <navigationController storyboardIdentifier="NavTvShow" id="6aO-Oj-Zvk" customClass="NavController" customModule="MovieGuide" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="aSL-J7-tVE"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GuC-OK-92Z">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="UDx-An-peL" kind="relationship" relationship="rootViewController" id="K3L-yh-fxp"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="v1p-bx-O1Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-834" y="758"/>
-        </scene>
-        <!--ShowVC-->
-        <scene sceneID="TTq-FI-brq">
-            <objects>
-                <viewController id="UDx-An-peL" customClass="TVShowVC" customModule="MovieGuide" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="zy7-pF-fmP">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rfG-ia-X68">
-                                <rect key="frame" x="0.0" y="156" width="393" height="613"/>
-                            </scrollView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rKf-cZ-akw">
-                                <rect key="frame" x="8" y="103" width="377" height="46"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="v4W-em-eWF"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
-                                </segments>
-                                <connections>
-                                    <action selector="segmentTV:" destination="UDx-An-peL" eventType="valueChanged" id="4FK-gD-NNi"/>
-                                </connections>
-                            </segmentedControl>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="QUP-sl-pL8"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="rfG-ia-X68" firstAttribute="top" secondItem="rKf-cZ-akw" secondAttribute="bottom" constant="8" id="Gj8-fO-Me1"/>
-                            <constraint firstItem="rKf-cZ-akw" firstAttribute="top" secondItem="QUP-sl-pL8" secondAttribute="top" id="Ss0-k0-xA7"/>
-                            <constraint firstItem="rfG-ia-X68" firstAttribute="leading" secondItem="zy7-pF-fmP" secondAttribute="leading" id="Sy3-fu-JVy"/>
-                            <constraint firstItem="QUP-sl-pL8" firstAttribute="trailing" secondItem="rKf-cZ-akw" secondAttribute="trailing" constant="8" id="Vch-MT-2vR"/>
-                            <constraint firstItem="QUP-sl-pL8" firstAttribute="trailing" secondItem="rfG-ia-X68" secondAttribute="trailing" id="X31-EU-m2K"/>
-                            <constraint firstItem="rKf-cZ-akw" firstAttribute="leading" secondItem="QUP-sl-pL8" secondAttribute="leading" constant="8" id="ZGI-ZP-9wd"/>
-                            <constraint firstItem="rKf-cZ-akw" firstAttribute="centerX" secondItem="QUP-sl-pL8" secondAttribute="centerX" id="tFa-qI-kNs"/>
-                            <constraint firstItem="rfG-ia-X68" firstAttribute="bottom" secondItem="QUP-sl-pL8" secondAttribute="bottom" id="yoI-QE-brz"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="zVf-ki-mMC"/>
-                    <connections>
-                        <outlet property="scrTV" destination="rfG-ia-X68" id="PpO-JY-Ktt"/>
-                        <outlet property="segmentControlTV" destination="rKf-cZ-akw" id="OWm-UE-nFJ"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Sd1-jp-doN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="140" y="758"/>
-        </scene>
     </scenes>
     <resources>
+        <image name="popcorn" catalog="system" width="103" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

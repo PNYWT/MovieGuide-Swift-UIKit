@@ -3,4 +3,70 @@
    uuid = "B14712AA-008F-4B38-9AAF-0643214C1157"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "31C7E45D-3E9A-4D80-8250-7CF097D5D34B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MovieGuide/CenterController/NavController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "setupViewController(viewController:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "31C7E45D-3E9A-4D80-8250-7CF097D5D34B - c4032482942f5528"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MovieGuide.NavController.setupViewController(viewController: __C.UIViewController) -&gt; ()"
+                  moduleName = "MovieGuide"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/CallmeOni/Documents/GitHub/MovieGuide-Swift-UIKit/MovieGuide/CenterController/NavController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "127"
+                  endingLineNumber = "127"
+                  offsetFromSymbolStart = "1532">
+               </Location>
+               <Location
+                  uuid = "31C7E45D-3E9A-4D80-8250-7CF097D5D34B - c4032482942f554b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MovieGuide.NavController.setupViewController(viewController: __C.UIViewController) -&gt; ()"
+                  moduleName = "MovieGuide"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/CallmeOni/Documents/GitHub/MovieGuide-Swift-UIKit/MovieGuide/CenterController/NavController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "128"
+                  endingLineNumber = "128"
+                  offsetFromSymbolStart = "1436">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BB0C26BD-3412-43A8-B017-83ADA727482B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MovieGuide/ViewController/HomeVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
